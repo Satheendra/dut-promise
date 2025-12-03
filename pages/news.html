@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>News — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  
+  <style>
+    /* News hero section */
+    .news-hero {
+      height: 40vh;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /*background: #f4f7f9;*/
+      background: #ffffff;
+      text-align: center;
+    }
+    
+    .news-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 32px 16px;
+    }
+    
+    .news-hero-title {
+      font-size: clamp(28px, 6vw, 48px);
+      margin: 0;
+      font-weight: 800;
+      color: #0a5a3e;
+    }
+    
+    .news-hero-subtitle {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #70858f;
+      max-width: 70ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Ensure page takes full height */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ---------------- Main / News content (HIDDEN - content preserved) ---------------- -->
+  <main style="display:none;">
+    <div class="page">
+      <div class="page-head">
+        <h1>News</h1>
+        <p>Latest updates, announcements and stories from the PROMISE partners and community. Click Read more to get full articles and resources.</p>
+      </div>
+
+      <div class="news-grid">
+        <!-- Row 1 -->
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=1" alt="News 1">
+          </div>
+          <div class="news-meta">15 OCT 2025 • Brussels</div>
+          <div class="news-title">How to make urban resilience work</div>
+          <div class="news-desc">Short summary of the news article. This paragraph gives readers an overview of the content before they click through to read the full article.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=2" alt="News 2">
+          </div>
+          <div class="news-meta">23 SEP 2025 • Online</div>
+          <div class="news-title">DUT City Panel: Key Takeaways</div>
+          <div class="news-desc">A concise blurb covering the top takeaways from the DUT City Panel and what stakeholders can expect to follow up on.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=3" alt="News 3">
+          </div>
+          <div class="news-meta">02 AUG 2025 • Stockholm</div>
+          <div class="news-title">Data for Sustainable Urban Freight</div>
+          <div class="news-desc">Highlights from our recent workshop — insights on data-sharing, analytics and implementation for sustainable freight operations.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- Row 2 -->
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=4" alt="News 4">
+          </div>
+          <div class="news-meta">12 JUL 2025 • Rome</div>
+          <div class="news-title">Urban Lunch Talks: Logistics</div>
+          <div class="news-desc">A summary of the conversation topics and suggested next steps for city logistics practitioners and researchers.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=5" alt="News 5">
+          </div>
+          <div class="news-meta">01 JUN 2025 • Online</div>
+          <div class="news-title">New Research Collaboration Announced</div>
+          <div class="news-desc">PROMISE partners announce a new cross-border research collaboration focused on low-impact logistics innovations.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=6" alt="News 6">
+          </div>
+          <div class="news-meta">18 MAY 2025 • Berlin</div>
+          <div class="news-title">Policy Roundtable Outcomes</div>
+          <div class="news-desc">Outcomes from the recent policy roundtable, including recommendations for municipal decision-makers.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- Row 3 -->
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=7" alt="News 7">
+          </div>
+          <div class="news-meta">05 APR 2025 • Oslo</div>
+          <div class="news-title">Sustainability Workshop Recap</div>
+          <div class="news-desc">Key lessons and participant reflections from our recent workshop on sustainable urban transitions.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=8" alt="News 8">
+          </div>
+          <div class="news-meta">22 MAR 2025 • Online</div>
+          <div class="news-title">Open Data Tools Released</div>
+          <div class="news-desc">We released a small toolkit to help cities evaluate urban freight data — available now on our resources page.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <article class="news-card">
+          <div class="news-thumb">
+            <img src="https://picsum.photos/800/500?random=9" alt="News 9">
+          </div>
+          <div class="news-meta">10 FEB 2025 • Paris</div>
+          <div class="news-title">PROMISE Annual Report 2024</div>
+          <div class="news-desc">Highlights from our annual report with metrics, milestones and next steps for the community.</div>
+          <div class="news-actions">
+            <a href="#" class="read-more">Read more <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ---------------- News Hero ---------------- -->
+  <main>
+    <section class="news-hero">
+      <div class="news-hero-content">
+        <h1 class="news-hero-title">News</h1>
+        <p class="news-hero-subtitle">
+          Coming soon! Check back for the latest updates, research findings, and stories from the PROMISE project and our partners.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <!-- ---------------- Scripts (mobile menu + CTA) ---------------- -->
+  <script>
+    // Mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      if (menuToggle) menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    if (menuToggle) menuToggle.addEventListener('click',()=>toggleMobileMenu());
+
+    // mobile submenu toggle
+    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+    
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

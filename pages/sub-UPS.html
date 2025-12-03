@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UPS Deutschland – PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  <style>
+    .partner-section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d0d0d0, transparent);
+      margin: 32px 0;
+    }
+
+    .two-column-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .content-section {
+      background: #f8f9fa;
+      padding: 24px;
+      border-radius: 8px;
+      border-left: 4px solid #0a5a3e;
+    }
+
+    .content-section h2 {
+      margin-top: 0;
+      color: #0a5a3e;
+      font-size: 1.3em;
+      margin-bottom: 16px;
+    }
+
+    .content-section p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .content-section ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 12px;
+    }
+
+    .content-section ul li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .content-section ul li:before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #0a5a3e;
+      font-weight: bold;
+    }
+
+    .personnel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .personnel-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .personnel-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .personnel-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .personnel-card h3 {
+      color: #0a5a3e;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.2em;
+    }
+
+    .personnel-card .specialization {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .personnel-card p {
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #555;
+    }
+
+    .personnel-card .orcid-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #0a5a3e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .personnel-card .orcid-link:hover {
+      text-decoration: underline;
+    }
+
+    .publications-section {
+      margin-top: 32px;
+      background: #f8f9fa;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .publications-section h2 {
+      color: #0a5a3e;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.3em;
+    }
+
+    .publications-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .publications-section ul li {
+      margin-bottom: 16px;
+      padding: 16px;
+      background: #ffffff;
+      border-left: 3px solid #0a5a3e;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+
+    .publications-section ul li strong {
+      color: #333;
+    }
+
+    .publications-section ul li em {
+      color: #666;
+    }
+
+    .publications-section ul li a {
+      color: #0a5a3e;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+
+    .publications-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .partner-right h1 {
+      color: #0a5a3e;
+      margin-bottom: 8px;
+    }
+
+    .partner-type {
+      color: #666;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="partner-container">
+      <div class="partner-left">
+        <div class="partner-logo">
+          <img src="../assets/Consortium/UPS-G-logo.jpeg" alt="UPS Deutschland logo">
+        </div>
+        <div class="partner-contact">
+          <h3>Klaus Stodick</h3>
+          <h4>Contact Person</h4>
+          <p>kstodick@ups.com</p>
+          <a href="https://www.ups.com/de/de/home" class="partner-cta" target="_blank">Visit Website</a>
+        </div>
+      </div>
+      <div class="partner-right">
+        <h1>UPS Deutschland</h1>
+        <p class="partner-type">Large Enterprise | Germany</p>
+        <p class="partner-desc">UPS Deutschland S.à r.l. & Co. OHG provides logistics expertise and sustainable delivery solutions.</p>
+        
+        <div class="partner-section-divider"></div>
+        
+        <div class="two-column-grid">
+          <div class="content-section">
+            <h2>Main Tasks in PROMISE</h2>
+            <ul>
+              <li>Industry partner for sustainable logistics and delivery innovation</li>
+            </ul>
+          </div>
+
+          <div class="content-section">
+            <h2>Expertise & Research Focus</h2>
+            <ul>
+              <li>Logistics optimization, sustainable delivery solutions, and last-mile urban distribution</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    menuToggle.addEventListener('click',()=>toggleMobileMenu());
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+    const goToTopBtn = document.getElementById('goToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>

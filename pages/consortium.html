@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Consortium — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  
+  <style>
+    
+    /* Hero section specific styling for consortium page */
+    .consortium-hero {
+      background-image: url("../assets/consortium/consortium-hero.jpg");
+      height: 60vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-size: cover;            /* fill while keeping aspect */
+      background-position: center center;/* center subject */
+      background-repeat: no-repeat;
+    }
+
+    /* Dark gradient overlay for text legibility */
+    .consortium-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(6,48,71,0.6), rgba(6,48,71,0.8));
+      z-index: 1;
+    }
+    
+    .consortium-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 32px 16px;
+    }
+    
+    .consortium-hero-title {
+      font-size: clamp(28px, 6vw, 48px);
+      margin: 0;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    
+    .consortium-hero-slogan {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Consortium page: remove the 120px main padding and remove header gap */
+    body.consortium main {
+      padding-top: 0 !important;
+    }
+
+  </style>
+</head>
+<body class="consortium">
+
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ---------------- Hero ---------------- -->
+  <main>
+    <section class="consortium-hero">
+      <div class="consortium-hero-content">
+        <h1 class="consortium-hero-title">Our Consortium</h1>
+        <p class="consortium-hero-slogan">Meet the partners driving PROMISE forward.</p>
+      </div>
+    </section>
+
+    <!-- ---------------- Consortium Cards ---------------- -->
+    <section class="consortium-section" aria-labelledby="consortiumTitle">
+      <div class="consortium-cards">
+        <a href="sub-du.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/du-logo.png" alt="Dalarna University logo"></div>
+          <div class="name">Dalarna University (DU)</div>
+          <div class="country">Sweden</div>
+        </a>
+        
+        <a href="sub-sic.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/sic-logo.jpg" alt="sustainability innocenter logo"></div>
+          <div class="name">Sustainability Innocenter (SIC)</div>
+          <div class="country">Sweden</div>
+        </a>
+        
+        <a href="sub-ModC.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/ModC-logo.png" alt="ModC Networks logo"></div>
+          <div class="name">ModC Networks AB (ModC)</div>
+          <div class="country">Sweden</div>
+        </a>
+        
+        <a href="sub-AAU.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/AAU-logo.png" alt="Aalborg University logo"></div>
+          <div class="name">Aalborg University (AAU)</div>
+          <div class="country">Denmark/IFD</div>
+        </a>
+        
+        <a href="sub-OSM.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/OSM-logo.png" alt="Osmangazi Municipality logo"></div>
+          <div class="name">Osmangazi Municipality (OSM)</div>
+          <div class="country">Türkiye/TUBITAK</div>
+        </a>
+        
+        <a href="sub-Hjet.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/HJET-logo.jpg" alt="HJET logo"></div>
+          <div class="name">DFAST Dagitim Hizmetleri ve Lojistik A.S. (HJET)</div>
+          <div class="country">Türkiye/TUBITAK</div>
+        </a>
+        
+        <a href="sub-Uzay.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/uzay-logo.png" alt="uzay logo"></div>
+          <div class="name">Uzay Tech Bilisim Arastirma Muhendislik Hizmetleri Sanayi ve Ticaret A.S. (Uzay)</div>
+          <div class="country">Türkiye/TUBITAK</div>
+        </a>
+        
+        <a href="sub-BMA.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/BMA-logo.jpeg" alt="BMA logo"></div>
+          <div class="name">Brasov Metropolitan Agency for Sustainable Development (BMA)</div>
+          <div class="country">Romania/UEFISC DI</div>
+        </a>
+        
+        <a href="sub-BEIA.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/BEIA-logo.png" alt="BEIA logo"></div>
+          <div class="name">BEIA Consult International (BEIA)</div>
+          <div class="country">Romania/UEFISC DI</div>
+        </a>
+        
+        <a href="sub-RETH.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/RETH-logo.png" alt="RETH logo"></div>
+          <div class="name">Municipality of Rethymno (RETH)</div>
+          <div class="country">Greece/GSRI</div>
+        </a>
+        
+        <a href="sub-UDE.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/UDE-logo.png" alt="UDE logo"></div>
+          <div class="name">Universität Duisburg-Essen (UDE)</div>
+          <div class="country">Germany/DLR</div>
+        </a>
+        
+        <a href="sub-WBG.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/WBG-logo.png" alt="WBG logo"></div>
+          <div class="name">Wirtschaftsförderung Bochum WiFö GmbH (WBG)</div>
+          <div class="country">Germany/DLR</div>
+        </a>
+        
+        <a href="sub-Koln.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/koln-logo.png" alt="Koln logo"></div>
+          <div class="name">STADT KOLN (Koln)</div>
+          <div class="country">Germany/DLR</div>
+        </a>
+        
+        <a href="sub-UPS.html" rel="noopener noreferrer" class="consortium-card">
+          <div class="circle"><img src="../assets/Consortium/UPS-G-logo.jpeg" alt="UPS-G logo"></div>
+          <div class="name">UPS Deutschland S.à.r.l. & Co. OHG (UPS-G)</div>
+          <div class="country">Germany/DLR</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <!-- ---------------- Scripts ---------------- -->
+  <script>
+    // Mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    menuToggle.addEventListener('click',()=>toggleMobileMenu());
+
+    // mobile submenu toggle
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

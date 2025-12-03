@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  
+  <style>
+    /* Events hero section */
+    .events-hero-section {
+      height: 40vh;
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      /*background: #f4f7f9;*/
+      text-align: center;
+    }
+    
+    .events-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 32px 16px;
+    }
+    
+    .events-hero-title {
+      font-size: clamp(28px, 6vw, 48px);
+      margin: 0;
+      font-weight: 800;
+      color: #0a5a3e;
+    }
+    
+    .events-hero-subtitle {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #70858f;
+      max-width: 70ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .events-hero-description {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: #70858f;
+      max-width: 64ch;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* Ensure page takes full height */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ---------------- Main / Events content (HIDDEN - content preserved) ---------------- -->
+  <main style="display:none;">
+    <div class="page">
+      <section class="events-hero">
+        <h1>Events</h1>
+        <p>From informal conversations in the Urban Lunch Talks webinar series to policy conferences — PROMISE events bring together stakeholders to exchange knowledge, build capacity and drive sustainable urban transitions.</p>
+      </section>
+
+      <div class="events-controls" role="region" aria-label="Events filters">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+          <button class="filter-btn">Event Category ▾</button>
+          <button class="filter-btn">Location ▾</button>
+        </div>
+        <div style="width:28px"></div>
+        <div class="toggle-row">
+          <label for="pastToggle">Past events</label>
+          <input id="pastToggle" type="checkbox" />
+        </div>
+      </div>
+
+      <div class="events-list" role="list">
+
+        <div class="year-group" aria-labelledby="year2025">
+          <h2 id="year2025">2025</h2>
+          <div class="year-divider" aria-hidden="true"></div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">15 OCT 2025 — 15 OCT 2025</div>
+            <div class="event-location">Brussels</div>
+            <div class="event-title">How to make urban resilience work: city case studies and the role of research and innovation</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">23 OCT 2025 — 23 OCT 2025</div>
+            <div class="event-location">Online</div>
+            <div class="event-title">DUT City Panel</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">6 NOV 2025 — 6 NOV 2025</div>
+            <div class="event-location">Rio de Janeiro</div>
+            <div class="event-title">Urban Transitions Mission Global Innovation Summit 2025</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
+            <div class="event-location">Location</div>
+            <div class="event-title">Event Title</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
+            <div class="event-location">Location</div>
+            <div class="event-title">Event Title</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
+            <div class="event-location">Location</div>
+            <div class="event-title">Event Title</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+          <div class="event-row" role="listitem">
+            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
+            <div class="event-location">Location</div>
+            <div class="event-title">Event Title</div>
+            <button class="event-action" aria-label="Open event">→</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ---------------- Events Hero ---------------- -->
+  <main>
+    <section class="events-hero-section">
+      <div class="events-hero-content">
+        <h1 class="events-hero-title">Events</h1>
+        <p class="events-hero-subtitle">
+          Stay tuned for upcoming events!
+        </p>
+        <p class="events-hero-description">
+          We're currently planning exciting workshops, webinars, and conferences to bring together stakeholders from across Europe. Check back soon for updates on PROMISE events where we'll exchange knowledge and drive sustainable urban transitions together.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <!-- ---------------- Scripts (mobile menu + CTA) ---------------- -->
+  <script>
+    // Mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      if (menuToggle) menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    if (menuToggle) menuToggle.addEventListener('click',()=>toggleMobileMenu());
+
+    // mobile submenu toggle
+    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+    
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

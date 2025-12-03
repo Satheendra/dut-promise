@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Living Labs — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+</head>
+
+<body>
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <!-- ---------------- Main ---------------- -->
+  <main>
+    <div class="page-head" style="padding-top: 2%;">
+      <h1>Living Labs</h1>
+      <p>Five city Living Labs — real-world environments where innovative urban mobility solutions are co-created, tested, and scaled.</p>
+    </div>
+
+    <section class="lab-section">
+      <div class="lab-img"><img src="../assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania"></div>
+      <div class="lab-text">
+        <h2>Brașov, Romania</h2>
+        <p>Reducing Congestion with Low-Emission Zones & Micro-Mobility. Brașov's Living Lab focuses on improving air quality and accessibility through pedestrian-first policies and last-mile transport innovation.</p>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="lab-img"><img src="../assets/Homepage/OG-Turkey.jpg" alt="Osmangazi, Türkiye"></div>
+      <div class="lab-text">
+        <h2>Osmangazi, Türkiye</h2>
+        <p>Connecting Osmangazi's City Square and Historical Center with Multimodal Transportation. The lab explores integrated networks linking public transport, cycling, and walking routes to support sustainable tourism and local mobility.</p>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="lab-img"><img src="../assets/Homepage/RN-Greece.jpg" alt="Rethymno, Greece"></div>
+      <div class="lab-text">
+        <h2>Rethymno, Greece</h2>
+        <p>Fostering Safer Micro-Mobility Strategies for Tourists and Community. This Living Lab advances shared mobility and safer infrastructure for both residents and seasonal visitors in a historic coastal city.</p>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="lab-img"><img src="../assets/Homepage/BM-Germany.jpg" alt="Bochum, Germany"></div>
+      <div class="lab-text">
+        <h2>Bochum, Germany</h2>
+        <p>Optimizing Logistics to Reduce Car Dependency. Bochum's lab focuses on freight consolidation and smart delivery strategies to improve efficiency while minimizing environmental impact in urban cores.</p>
+      </div>
+    </section>
+
+    <section class="lab-section">
+      <div class="lab-img"><img src="../assets/Homepage/CN-Germany.jpg" alt="Cologne, Germany"></div>
+      <div class="lab-text">
+        <h2>Cologne, Germany</h2>
+        <p>Inclusive, Sustainable Transport Solutions to Enhance Urban Accessibility. Cologne aims to integrate accessibility-focused planning with inclusive community engagement to make mobility equitable for all.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <!-- ---------------- Scripts ---------------- -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      if (menuToggle) menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    if (menuToggle) menuToggle.addEventListener('click',()=>toggleMobileMenu());
+
+    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

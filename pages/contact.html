@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact – PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  <style>
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .contact-hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .contact-hero h1 {
+      font-size: clamp(32px, 5vw, 42px);
+      color: #0a5a3e;
+      margin-bottom: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-hero p {
+      font-size: 1.1rem;
+      color: #70858f;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .contact-section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d0d0d0, transparent);
+      margin: 48px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .contact-card {
+      background: #f8f9fa;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      border-left: 4px solid #0a5a3e;
+      padding: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contact-card h2 {
+      color: #0a5a3e;
+      font-size: 1.3em;
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .contact-card h3 {
+      color: #1f3940;
+      font-size: 1.1em;
+      margin: 0 0 6px 0;
+      font-weight: 700;
+    }
+
+    .contact-card .title {
+      color: #70858f;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .contact-card .organization {
+      color: #0a5a3e;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-item-label {
+      font-size: 0.8rem;
+      color: #70858f;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-item-value {
+      color: #1f3940;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .contact-item-value a {
+      color: #0a5a3e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-item-value-b a {
+      color: #0a5a3e;
+      text-decoration: none;
+      font-weight: 500;
+      transition: none;
+    }
+
+    .contact-item-value a:hover {
+      color: #33AB6D;
+      text-decoration: underline;
+    }
+
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: #0a5a3e;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: #33AB6D;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(10, 90, 62, 0.3);
+    }
+
+    .social-link img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="contact-container">
+      <div class="contact-hero">
+        <h1>Contact Us</h1>
+        <p>Get in touch with the PROMISE project team</p>
+      </div>
+
+      <div style="max-width: 480px; margin: 0 auto;">
+        <!-- Project Coordinator -->
+        <div class="contact-card">
+          <h2>Project Coordinator</h2>
+          <h3>Mia Xiaoyun Zhao</h3>
+          <div class="title">Associate Professor</div>
+        <!--  <div class="organization">Dalarna University, Sweden</div> -->
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">
+                <a href="mailto:xzh@du.se">xzh@du.se</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-label">Institution</div>
+              <div class="contact-item-value-b">
+                <a>Dalarna University</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-section-divider"></div>
+
+      <div style="text-align: center; margin-top: 40px; color: #70858f;">
+        <p style="font-size: 1.05rem; line-height: 1.7;">
+          The PROMISE project is funded by the Driving Urban Transitions (DUT) Partnership<br>
+          as part of the European research and innovation programme.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a href="legal.html">Legal notice</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="accessibility.html">Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a href="press.html">Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show',isShow);
+      menuToggle.setAttribute('aria-expanded',String(isShow));
+      mobilePanel.setAttribute('aria-hidden',String(!isShow));
+    }
+    menuToggle.addEventListener('click',()=>toggleMobileMenu());
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+    const goToTopBtn = document.getElementById('goToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>

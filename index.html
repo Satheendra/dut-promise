@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Homepage — PROMISE</title>
+  <link rel="stylesheet" href="main.css">
+  
+  <style>
+    /* Hero Slideshow Styles */
+    .hero-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    /* Slideshow indicators */
+    .hero-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .hero-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .hero-indicator.active {
+      background: rgba(255,255,255,0.95);
+      transform: scale(1.2);
+    }
+
+    .hero-indicator:hover {
+      background: rgba(255,255,255,0.8);
+    }
+
+    /* Consistent header styles matching events page */
+    .at-glance h2,
+    .living-labs h2,
+    .home-events h2,
+    .home-news h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin: 0 0 30px;
+      color: #0a5a3e;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: -0.01em;
+    }
+
+    /* Remove all padding for homepage so hero starts at top and is full width */
+    main {
+      padding: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky header (nav floats above the hero) -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <!-- left: logo -->
+        <div class="logo-wrap">
+          <a href="index.html" class="logo-box" id="logoPlaceholder">
+            <img src="assets/Homepage/Logo_Promise.png" alt="PROMISE logo" onerror="this.style.display='block'; this.parentElement.textContent='LOGO'">
+          </a>
+        </div>
+
+        <!-- center: links -->
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li role="none" class="dropdown">
+            <a role="menuitem" href="#about" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a role="menuitem" href="pages/about.html">PROMISE Project</a></li>
+              <li><a role="menuitem" href="pages/consortium.html">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="pages/living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="pages/news.html" role="menuitem">News</a></li>
+          <li><a href="pages/events.html" role="menuitem">Events</a></li>
+          <li><a href="pages/contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+
+        <!-- right: CTA (hidden for now) -->
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel" aria-label="Open menu">☰</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile panel -->
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="pages/about.html">PROMISE Project</a>
+        <a href="pages/consortium.html">Consortium</a>
+      </div>
+
+      <a href="pages/living-labs.html">Living Labs</a>
+      <a href="pages/news.html">News</a>
+      <a href="pages/events.html">Events</a>
+      <a href="pages/contact.html">Contact Us</a>
+      
+      <!-- Hidden get involved button in mobile too -->
+      <div class="mobile-bottom-actions" style="display:none;">
+        <button class="btn-cta" id="mobileGetInvolved">Get Involved</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero: Slideshow with 3 images -->
+  <main>
+    <section class="hero" aria-labelledby="heroTitle">
+      <!-- Slideshow container -->
+      <div class="hero-slideshow">
+        <div class="hero-slide active" style="background-image: url('assets/Homepage/hero-slide-1.jpeg');" role="img" aria-label="Hero image 1"></div>
+        <div class="hero-slide" style="background-image: url('assets/Homepage/hero-slide-2.jpg');" role="img" aria-label="Hero image 2"></div>
+        <div class="hero-slide" style="background-image: url('assets/Homepage/hero-slide-3.jpg');" role="img" aria-label="Hero image 3"></div>
+      </div>
+
+      <!-- Slideshow indicators -->
+      <div class="hero-indicators" role="navigation" aria-label="Slideshow controls">
+        <button class="hero-indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+        <button class="hero-indicator" data-slide="1" aria-label="Go to slide 2"></button>
+        <button class="hero-indicator" data-slide="2" aria-label="Go to slide 3"></button>
+      </div>
+
+      <div class="hero-content">
+        <h1 id="heroTitle" class="hero-title">
+          Shaping the Future of Urban Mobility
+        </h1>
+        <div class="hero-slogan" id="heroSlogan">
+          PROMISE is reshaping the way we move through cities by shifting urban mobility away from car dependency and towards smarter, greener, and more connected solutions.
+        </div>
+      </div> 
+    </section>
+ 
+    <!-- PROMISE at a glance -->
+    <section class="at-glance" aria-labelledby="glanceTitle">
+      <div style="max-width:90%;margin:0 auto;text-align:center;padding:20px">
+        <h2 id="glanceTitle">PROMISE at a glance</h2>
+        <p style="color:#29424a;opacity:0.9;line-height:1.7;max-width:80%;margin:0 auto 40px;font-size:1.05rem">The PROMISE project aims to fundamentally shift urban mobility away from car dependency. Making micro-mobility the heartbeat of the 15-minute city, PROMISE implements innovative strategies that include the development of a Geographic Information System (GIS)-based Micro-Mobility Decision Support Tool (MDST), fostering multi-stakeholder collaborations through co-creation methodologies, and establishing living labs across diverse urban settings. Through innovation, collaboration, and real-world testing, we're creating smarter, greener, and more accessible cities for everyone.</p>
+
+        <div style="margin:18px 0 20px">
+          <a class="cta-dark" href="pages/about.html">LEARN MORE ABOUT THE PROJECT</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Living Labs -->
+    <section class="living-labs" aria-labelledby="livingTitle">
+      <div class="slider-container labs-wrapper">
+        <h2 id="livingTitle">Living Labs</h2>
+        <p style="color:#29424a;opacity:0.9;line-height:1.7;max-width:80%;margin:0 auto 30px;font-size:1.05rem;text-align:center;">
+          Explore our Living Labs, real-world urban mobility testbeds where we develop, test, and demonstrate innovative solutions for smarter, greener cities.
+        </p>
+
+        <div class="labs-grid" role="list" aria-label="Living Labs">
+          <div class="labs-card" role="listitem">
+            <img src="assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania">
+            <h3>Brașov, Romania</h3>
+            <p>Reducing Congestion with Low-Emission Zones & Micro-Mobility</p>
+          </div>
+
+          <div class="labs-card" role="listitem">
+            <img src="assets/Homepage/OG-Turkey.jpg" alt="Osmangazi, Türkiye">
+            <h3>Osmangazi, Türkiye</h3>
+            <p>Connecting Osmangazi's City Square and Historical Center with Multimodal Transportation</p>
+          </div>
+
+          <div class="labs-card" role="listitem">
+            <img src="assets/Homepage/RN-Greece.jpg" alt="Rethymno, Greece">
+            <h3>Rethymno, Greece</h3>
+            <p>Fostering Safer Micro-Mobility Strategies for Tourists and Community</p>
+          </div>
+
+          <div class="labs-card" role="listitem">
+            <img src="assets/Homepage/BM-Germany.jpg" alt="Bochum, Germany">
+            <h3>Bochum, Germany</h3>
+            <p>Optimizing Logistics to Reduce Car Dependency</p>
+          </div>
+
+          <div class="labs-card" role="listitem">
+            <img src="assets/Homepage/CN-Germany.jpg" alt="Cologne, Germany">
+            <h3>Cologne, Germany</h3>
+            <p>Inclusive, Sustainable Transport Solutions to Enhance Urban Accessibility</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin:30px 0 20px;">
+          <a class="cta-labs" href="pages/living-labs.html">Explore the Living Labs</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== Homepage: Events teaser (HIDDEN - content preserved) ====== -->
+    <section class="home-events" aria-labelledby="homeEventsTitle" style="display:none;">
+      <div class="home-events-inner">
+        <div class="home-events-head">
+          <h2 id="homeEventsTitle">Events</h2>
+          <p class="home-events-intro">
+            From short webinars to international summits — PROMISE hosts events to exchange knowledge and support sustainable urban transitions.
+          </p>
+        </div>
+
+        <div class="home-events-cards" role="list" aria-label="Upcoming events">
+          <article class="home-event" role="listitem">
+            <div class="home-event-date">15 OCT 2025</div>
+            <div class="home-event-meta">
+              <div class="home-event-title">How to make urban resilience work</div>
+              <div class="home-event-loc">Brussels</div>
+            </div>
+          </article>
+
+          <article class="home-event" role="listitem">
+            <div class="home-event-date">23 OCT 2025</div>
+            <div class="home-event-meta">
+              <div class="home-event-title">DUT City Panel</div>
+              <div class="home-event-loc">Online</div>
+            </div>
+          </article>
+
+          <article class="home-event" role="listitem">
+            <div class="home-event-date">6 NOV 2025</div>
+            <div class="home-event-meta">
+              <div class="home-event-title">Urban Transitions Mission Global Innovation Summit 2025</div>
+              <div class="home-event-loc">Rio de Janeiro</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="home-events-cta">
+          <a href="events.html" class="btn-see-all">SEE ALL EVENTS</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====== Homepage: News section (HIDDEN - content preserved) ====== -->
+    <section class="home-news" id="news" aria-labelledby="newsTitle" style="display:none; padding:80px 20px; background:#ffffff;">
+      <div style="max-width:90%; margin:0 auto; text-align:center; padding:20px;">
+        <h2 id="newsTitle">Latest News</h2>
+        <p style="color:#29424a; opacity:0.9; line-height:1.7; max-width:80%; margin:0 auto 30px; font-size:1.05rem;">
+          Stay up to date with the latest developments, research findings, and stories from the PROMISE project.
+        </p>
+      </div>
+
+      <style>
+        .news-slider-wrapper{position:relative;max-width:100%;margin:0 auto;padding:0 44px}
+        .news-slider{display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;padding:12px 0 20px;scrollbar-width:thin}
+        .news-slider::-webkit-scrollbar{height:6px}
+        .news-slider::-webkit-scrollbar-track{background:rgba(6,48,71,0.04);border-radius:10px}
+        .news-slider::-webkit-scrollbar-thumb{background:rgba(6,48,71,0.2);border-radius:10px}
+        .news-slider .news-card{flex:0 0 30%;max-width:30%;min-width:260px}
+        .news-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:white;box-shadow:0 4px 12px rgba(2,6,23,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:700;color:#063047;z-index:10}
+        .news-left{left:0}
+        .news-right{right:0}
+        .news-arrow:hover{background:#33AB6D;color:white}
+        .news-cta{text-align:center;margin-top:24px}
+        .news-cta a{color:#1fb34f;font-weight:700;text-decoration:none}
+
+        @media (max-width:1000px){.news-card{flex:0 0 45%;max-width:45%}}
+        @media (max-width:640px){.news-card{flex:0 0 82%;max-width:82%}.news-arrow{display:none}}
+      </style>
+
+      <div class="news-slider-wrapper" aria-label="Latest news carousel">
+        <button class="news-arrow news-left" aria-label="Previous news">&lt;</button>
+        <div class="news-slider" id="newsSlider">
+          <!-- JS will populate 7 latest news cards here -->
+        </div>
+        <button class="news-arrow news-right" aria-label="Next news">&gt;</button>
+      </div>
+
+      <div class="news-cta"><a href="news.html">See all news →</a></div>
+    </section>
+
+
+    <!-- ---------------- Footer ---------------- -->
+    <!-- ---------------- Footer ---------------- -->
+    <footer class="promise-footer">
+      <div class="promise-footer-container">
+        <div class="promise-footer-about">
+          <div>
+          <img src="assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+          </div>
+          <div class="promise-footer-eu">
+            <img src="assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+          </div>
+        </div>
+
+        <div class="promise-footer-links">
+          <a >Legal notice</a>
+          <a >Privacy Policy</a>
+          <a >Accessibility</a>
+          <a href="contact.html">Contact</a>
+          <a >Press</a>
+        </div>
+
+        <div class="promise-footer-social">
+          <span>Find us on</span>
+          <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+          <a aria-label="LinkedIn"><img src="assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+        </div>
+      </div>
+
+      <div class="promise-footer-copy">
+        &copy; 2025 Promise Project
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <script>
+    // ========== Hero Slideshow ==========
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      // Remove active class from all slides and indicators
+      slides.forEach(slide => slide.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+      
+      // Add active class to current slide and indicator
+      slides[index].classList.add('active');
+      indicators[index].classList.add('active');
+      
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      let next = (currentSlide + 1) % totalSlides;
+      showSlide(next);
+    }
+
+    // Auto-advance slides every 5 seconds
+    let slideInterval = setInterval(nextSlide, 5000);
+
+    // Click indicators to jump to specific slide
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        showSlide(index);
+        // Reset the auto-advance timer
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+      });
+    });
+
+    // ========== Mobile menu toggle ==========
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    function toggleMobileMenu(show){
+      const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show', isShow);
+      menuToggle.setAttribute('aria-expanded', String(isShow));
+      mobilePanel.setAttribute('aria-hidden', String(!isShow));
+    }
+    menuToggle.addEventListener('click', ()=> toggleMobileMenu());
+
+    // Mobile panel link handling
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const submenu = btn.nextElementSibling;
+        if(submenu && submenu.classList.contains('mobile-submenu')){
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+
+    // ========== News Slider (preserved but hidden) ==========
+    // Replace this array with real feed from CMS / API
+    const latestNews = [
+      {title:'PROMISE launches new MDST tool',date:'01 SEP 2025',excerpt:'A Geographic Information System-based Micro-Mobility Decision Support Tool is now available for partners to test.',image:'assets/News/news-placeholder.jpg',url:'news/article1.html'},
+      {title:'Living Lab results: Brașov case study',date:'18 AUG 2025',excerpt:'Early results show reduced congestion in Brașov after introducing low-emission zones.',image:'assets/News/news-placeholder.jpg',url:'news/article2.html'},
+      {title:'Osmangazi pilot expansion',date:'05 JUL 2025',excerpt:'Osmangazi expands micro-mobility lanes to connect heritage and commerce areas.',image:'assets/News/news-placeholder.jpg',url:'news/article3.html'},
+      {title:'Rethymno community workshop',date:'22 JUN 2025',excerpt:'Local stakeholders participated in co-creation workshops to improve tourist mobility safety.',image:'assets/News/news-placeholder.jpg',url:'news/article4.html'},
+      {title:'Bochum logistics optimisation update',date:'10 MAY 2025',excerpt:'New routing algorithms reduced last-mile car trips across pilot zones.',image:'assets/News/news-placeholder.jpg',url:'news/article5.html'},
+      {title:'Cologne accessibility study published',date:'14 APR 2025',excerpt:'An accessibility assessment highlights priority corridors for micro-mobility.',image:'assets/News/news-placeholder.jpg',url:'news/article6.html'},
+      {title:'PROMISE at Urban Transitions Summit',date:'28 MAR 2025',excerpt:'PROMISE presented findings at the international summit on sustainable cities.',image:'assets/News/news-placeholder.jpg',url:'news/article7.html'}
+    ];
+
+    const slider = document.getElementById('newsSlider');
+    if(slider) {
+      function buildNewsCards(items){
+        slider.innerHTML = '';
+        items.slice(0,7).forEach(it => {
+          const card = document.createElement('article');
+          card.className = 'news-card';
+          card.innerHTML = `
+            <a href="${it.url}" style="text-decoration:none;color:inherit">
+              <img src="${it.image}" alt="${it.title}">
+              <div class="meta">${it.date}</div>
+              <h3>${it.title}</h3>
+              <p>${it.excerpt}</p>
+            </a>`;
+          slider.appendChild(card);
+        });
+      }
+
+      buildNewsCards(latestNews);
+
+      // arrows
+      const rightArrow = document.querySelector('.news-right');
+      const leftArrow = document.querySelector('.news-left');
+      if(rightArrow) rightArrow.addEventListener('click', ()=> slider.scrollBy({left: slider.offsetWidth/1.5, behavior:'smooth'}));
+      if(leftArrow) leftArrow.addEventListener('click', ()=> slider.scrollBy({left: -slider.offsetWidth/1.5, behavior:'smooth'}));
+
+      // basic dragging
+      let isDown=false,startX,scrollLeft;
+      slider.addEventListener('mousedown', (e)=>{isDown=true;slider.classList.add('active');startX=e.pageX-slider.offsetLeft;scrollLeft=slider.scrollLeft;});
+      slider.addEventListener('mouseleave', ()=>{isDown=false;slider.classList.remove('active');});
+      slider.addEventListener('mouseup', ()=>{isDown=false;slider.classList.remove('active');});
+      slider.addEventListener('mousemove',(e)=>{if(!isDown) return; e.preventDefault(); const x=e.pageX-slider.offsetLeft; const walk=(x-startX)*1.5; slider.scrollLeft = scrollLeft - walk;});
+    }
+
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

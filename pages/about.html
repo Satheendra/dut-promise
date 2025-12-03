@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — PROMISE Project</title>
+  <link rel="stylesheet" href="../main.css" />
+  <style>
+    /* Horizontal icon + text layout for Why PROMISE Matters */
+    .promise-grid-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .grid-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      flex: 1 1 45%;
+      text-align: center;
+
+    }
+    .grid-item img {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Vertical timeline layout for Expected Impact */
+    .impact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .grid-item div {
+      flex: 1;                   /* allows text block to expand */
+      text-align: center;        /* centers h3 + p */
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+      </div>
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </header>
+
+<main>
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="about-hero" style="padding-top: 2%;">
+      <h1>What is PROMISE?</h1>
+      <p>
+        PROMISE (<em>Progressive Reduction of Car Dependency through Micro-Mobility, Infrastructure,
+        and Smart Policy Integration</em>) is a three-year European research initiative focused on
+        transforming short urban trips. By improving infrastructure, policy alignment, and user
+        acceptance, PROMISE demonstrates how micro-mobility can become a reliable alternative to car use.
+      </p>
+      <p>
+        PROMISE treats both personal mobility and last-mile logistics as a unified system,
+        supporting cleaner, more inclusive, and more efficient urban mobility.
+      </p>
+    </section>
+
+    <!-- AT A GLANCE -->
+    <section class="about-section" style="margin-top:60px;">
+      <h2>At a Glance</h2>
+
+      <div class="labs-grid" style="margin-top:32px;">
+        <div class="labs-card">
+          <img src="../assets/icons/micro.jpg" alt="">
+          <h3>Smart Micro-Mobility</h3>
+          <p>Integrating cycling, walking, e-bikes, cargo bikes, and shared modes.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/icons/co_create.png" alt="">
+          <h3>Urban Co-Creation</h3>
+          <p>Citizens, businesses, and city partners design mobility together.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/icons/tools.png" alt="">
+          <h3>Decision Support</h3>
+          <p>GIS-based tools for safer routes and policy planning.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/icons/labs.jpg" alt="">
+          <h3>Living Labs</h3>
+          <p>Testing mobility solutions directly in European cities.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH (TWO-COLUMN) -->
+    <section class="lab-section" style="margin-top:40px;">
+      <div class="lab-text">
+        <h2>Our Approach</h2>
+        <p>
+          PROMISE uses a co-creation and research-driven methodology that brings together municipalities,
+          citizens, researchers, mobility operators, and logistics partners to collaboratively design
+          mobility solutions.
+        </p>
+        <p>
+          Through Living Labs, PROMISE tests new infrastructure, services, and logistics practices in
+          real city settings, combining human-centered insights with data-driven analysis.
+        </p>
+
+        <p>A central output is the <strong>Micro-Mobility Decision Support Tool (MDST)</strong>, which helps cities:</p>
+
+        <ul>
+          <li>Identify safe and continuous micro-mobility routes</li>
+          <li>Plan infrastructure improvements and hubs</li>
+          <li>Optimize cargo-bike logistics and curb space</li>
+          <li>Assess safety, emissions, and accessibility impacts</li>
+          <li>Develop evidence-based mobility policies</li>
+        </ul>
+      </div>
+
+      <div class="lab-img">
+        <img src="../assets/about/approach.jpg" alt="PROMISE Approach">
+      </div>
+    </section>
+
+    <!-- WHY PROMISE MATTERS -->
+    <section class="about-section">
+      <h2>Why PROMISE Matters</h2>
+
+      <div class="promise-grid-row">
+        <div class="grid-item">
+          <img src="../assets/icons/car.jpg" alt="">
+          <div>
+            <h3>Car Dependency</h3>
+            <p>Short car trips cause congestion, emissions, and unsafe streets.</p>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <img src="../assets/icons/regulations.jpg" alt="">
+          <div>
+            <h3>Regulation Gaps</h3>
+            <p>European cities face fragmented and inconsistent micro-mobility rules.</p>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <img src="../assets/icons/access.jpg" alt="">
+          <div>
+            <h3>Accessibility Barriers</h3>
+            <p>Elderly and mobility-restricted groups lack safe and adapted options.</p>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <img src="../assets/icons/resist.png" alt="">
+          <div>
+            <h3>Behavioral Resistance</h3>
+            <p>Shifting habits requires trust, familiarity, and infrastructure.</p>
+          </div>
+        </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVING LABS -->
+    <section class="about-section" style=padding-top:40px;>
+      <h2>Living Labs</h2>
+
+      <div class="labs-grid" style="margin-top:30px;">
+        <div class="labs-card">
+          <img src="../assets/homepage/BR-Romania.jpg" alt="">
+          <h3>Brașov, Romania</h3>
+          <p>Cargo-bike logistics and curbside management.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/Homepage/OG-Turkey.jpg" alt="">
+          <h3>Osmangazi, Türkiye</h3>
+          <p>First/last-mile connections in dense urban zones.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/Homepage/RN-Greece.jpg" alt="">
+          <h3>Rethymno, Greece</h3>
+          <p>Balancing tourist mobility with local needs.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/Homepage/BM-Germany.jpg" alt="">
+          <h3>Bochum, Germany</h3>
+          <p>Short-distance cargo-bike delivery models.</p>
+        </div>
+
+        <div class="labs-card">
+          <img src="../assets/Homepage/CN-Germany.jpg" alt="">
+          <h3>Cologne, Germany</h3>
+          <p>Inclusive cargo-bike access for elderly users.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPECTED IMPACT -->
+    <section class="about-section" style="margin-top:40px; padding-top:40px;">
+      <h2>Expected Impacts</h2>
+
+      <div class="impact-timeline" style="
+        margin-top:20px;
+        text-align:center;
+        border-radius:8px;
+        padding:20px;
+        position:relative;
+      ">
+        <div class="impact-item">
+          <h3>Reduced Car Use</h3>
+          <p>Micro-mobility replaces short and inefficient car trips.</p>
+        </div>
+
+        <div class="impact-item">
+          <h3>Safer Networks</h3>
+          <p>Better planning improves lanes, crossings, and shared spaces.</p>
+        </div>
+
+        <div class="impact-item">
+          <h3>Smarter Logistics</h3>
+          <p>Cargo-bike solutions reduce vans in crowded centers.</p>
+        </div>
+
+        <div class="impact-item">
+          <h3>Better Policy</h3>
+          <p>Clear guidance helps cities regulate micro-mobility effectively.</p>
+        </div>
+
+        <div class="impact-item">
+          <h3>15-Minute Cities</h3>
+          <p>Transferable models support compact, walkable neighborhoods.</p>
+        </div>
+
+        <div class="impact-item">
+          <h3>Inclusive Design</h3>
+          <p>Communities shape solutions that impact their daily lives.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BUTTON -->
+    <div class="about-section" style="margin-top:50px;">
+      <a href="living-labs.html" class="cta-dark">Explore the Living Labs</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="promise-footer">
+  <div class="promise-footer-container">
+    <div class="promise-footer-about">
+      <div>
+      <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+      </div>
+      <div class="promise-footer-eu">
+        <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+      </div>
+    </div>
+
+    <div class="promise-footer-links">
+      <a >Legal notice</a>
+      <a >Privacy Policy</a>
+      <a >Accessibility</a>
+      <a href="contact.html">Contact</a>
+      <a >Press</a>
+    </div>
+
+    <div class="promise-footer-social">
+      <span>Find us on</span>
+      <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+      <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+    </div>
+  </div>
+
+  <div class="promise-footer-copy">
+    &copy; 2025 Promise Project
+  </div>
+</footer>
+
+
+
+<button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+<script>
+  // Mobile toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+
+  function toggleMobileMenu(show) {
+    const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+    mobilePanel.classList.toggle('show', isShow);
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', String(isShow));
+    mobilePanel.setAttribute('aria-hidden', String(!isShow));
+  }
+  if (menuToggle) menuToggle.addEventListener('click', () => toggleMobileMenu());
+
+  document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const submenu = btn.nextElementSibling;
+      if (submenu && submenu.classList.contains('mobile-submenu')) {
+        btn.classList.toggle('active');
+        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+      } else {
+        toggleMobileMenu(false);
+      }
+    });
+  });
+
+    // ========== Go to Top Button ==========
+    const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+</script>
+
+</body>
+</html>

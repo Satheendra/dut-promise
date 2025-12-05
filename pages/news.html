@@ -86,16 +86,36 @@
         </div>
       </nav>
     </div>
+    <!-- Mobile panel overlay -->
+    <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
+    
+    <!-- Mobile panel -->
     <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
-      <a href="#about" class="mobile-drop">About</a>
-      <div class="mobile-submenu">
-        <a href="about.html">PROMISE Project</a>
-        <a href="consortium.html">Consortium</a>
+      <!-- Close button -->
+      <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      
+      <!-- Centered logo -->
+      <div class="mobile-panel-logo">
+        <a href="../index.html">
+          <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+        </a>
       </div>
-      <a href="living-labs.html">Living Labs</a>
-      <a href="news.html">News</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact Us</a>
+      
+      <!-- Navigation links -->
+      <nav class="mobile-panel-nav">
+        <a href="#about" class="mobile-drop">About</a>
+        <div class="mobile-submenu">
+          <a href="about.html">PROMISE Project</a>
+          <a href="consortium.html">Consortium</a>
+        </div>
+
+        <a href="living-labs.html">Living Labs</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
     </div>
   </header>
 
@@ -247,7 +267,7 @@
         <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
         </div>
         <div class="promise-footer-eu">
-          <img src="../assets/Homepage/DUT_logo.png" alt="DUT logo" class="promise-footer-logo">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
         </div>
       </div>
 
@@ -276,13 +296,21 @@
     // Mobile toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobilePanel = document.getElementById('mobilePanel');
+    const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
+    const mobilePanelClose = document.getElementById('mobilePanelClose');
+    
     function toggleMobileMenu(show){
       const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
       mobilePanel.classList.toggle('show',isShow);
+      mobilePanelOverlay.classList.toggle('show',isShow);
       if (menuToggle) menuToggle.setAttribute('aria-expanded',String(isShow));
       mobilePanel.setAttribute('aria-hidden',String(!isShow));
+      mobilePanelOverlay.setAttribute('aria-hidden',String(!isShow));
+      document.body.style.overflow = isShow ? 'hidden' : '';
     }
     if (menuToggle) menuToggle.addEventListener('click',()=>toggleMobileMenu());
+    if (mobilePanelClose) mobilePanelClose.addEventListener('click',()=>toggleMobileMenu(false));
+    if (mobilePanelOverlay) mobilePanelOverlay.addEventListener('click',()=>toggleMobileMenu(false));
 
     // mobile submenu toggle
     document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn=>{

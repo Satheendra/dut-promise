@@ -497,7 +497,7 @@ main {
 
 .page-head p {
   color: var(--muted);
-  max-width: 70ch;
+  max-width: 95%;
   margin: 0 auto;
   line-height: 1.6;
   font-size: 0.98rem;

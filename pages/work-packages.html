@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work Packages – PROMISE Project</title>
+  <link rel="stylesheet" href="../main.css" />
+  <style>
+    :root {
+      --wp1-color: #77d8b1;
+      --wp2-color: #2ac587;
+      --wp3-color: #2d9e71;
+      --wp4-color: #0a8a57;
+      --wp5-color: #135c3f;
+      --wp6-color: #03492d;
+    }
+    .wp-hero { text-align: center; margin: 24px 0 48px; }
+    .wp-hero h1 { font-size: clamp(28px, 4.5vw, 40px); margin: 0; color: var(--accent); font-weight: 800; }
+    .wp-hero p { max-width: 72ch; margin: 16px auto 0; color: var(--muted); line-height: 1.7; font-size: 1.02rem; }
+    .timeline-section { margin: 48px 0; padding: 32px 0; background: var(--alt-bg); border-radius: 16px; }
+    .timeline-title { text-align: center; font-size: 1.25rem; color: var(--accent); margin-bottom: 32px; font-weight: 700; }
+    .timeline-wrapper { overflow-x: auto; padding: 0 24px 16px; }
+    .timeline-container { display: grid; grid-template-columns: 120px repeat(36, 1fr); gap: 2px; min-width: 900px; font-size: 0.75rem; }
+    .timeline-label { font-weight: 700; color: var(--accent); padding: 8px 12px; display: flex; align-items: center; position: sticky; left: -15px; background: var(--alt-bg); z-index: 2; }
+    .timeline-month { text-align: center; padding: 8px 2px; color: var(--muted); font-weight: 600; border-bottom: 2px solid var(--dot); }
+    .timeline-wp-label { padding: 10px 12px; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; white-space: nowrap; position: sticky; left: -15px; background: var(--alt-bg); z-index: 2; }
+    .timeline-wp-label .wp-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .timeline-cell { height: 36px; position: relative; }
+    .timeline-bar { position: absolute; top: 50%; transform: translateY(-50%); height: 20px; border-radius: 10px; opacity: 0.85; transition: opacity 0.2s ease, transform 0.2s ease; }
+    .timeline-bar:hover { opacity: 1; transform: translateY(-50%) scaleY(1.2); }
+    .wp1-bar { background: var(--wp1-color); } .wp2-bar { background: var(--wp2-color); } .wp3-bar { background: var(--wp3-color); }
+    .wp4-bar { background: var(--wp4-color); } .wp5-bar { background: var(--wp5-color); } .wp6-bar { background: var(--wp6-color); }
+    .wp1-dot { background: var(--wp1-color); } .wp2-dot { background: var(--wp2-color); } .wp3-dot { background: var(--wp3-color); }
+    .wp4-dot { background: var(--wp4-color); } .wp5-dot { background: var(--wp5-color); } .wp6-dot { background: var(--wp6-color); }
+    .year-marker { text-align: center; font-weight: 700; color: var(--accent); padding: 4px; font-size: 0.85rem; background: rgba(10, 90, 62, 0.05); }
+    .wp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 24px; margin-top: 48px; }
+    .wp-card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border-top: 5px solid; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .wp-card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.1); }
+    .wp-card.wp1 { border-top-color: var(--wp1-color); } .wp-card.wp2 { border-top-color: var(--wp2-color); } .wp-card.wp3 { border-top-color: var(--wp3-color); }
+    .wp-card.wp4 { border-top-color: var(--wp4-color); } .wp-card.wp5 { border-top-color: var(--wp5-color); } .wp-card.wp6 { border-top-color: var(--wp6-color); }
+    .wp-card-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+   /* .wp-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .wp-card.wp1 .wp-icon { background: rgba(26, 121, 83, 0.12); } .wp-card.wp2 .wp-icon { background: rgba(37, 99, 235, 0.12); } .wp-card.wp3 .wp-icon { background: rgba(124, 58, 237, 0.12); }
+    .wp-card.wp4 .wp-icon { background: rgba(220, 38, 38, 0.12); } .wp-card.wp5 .wp-icon { background: rgba(234, 88, 12, 0.12); } .wp-card.wp6 .wp-icon { background: rgba(8, 145, 178, 0.12); } */
+    .wp-card-info h3 { font-size: 1.15rem; font-weight: 700; color: var(--dark-text); margin: 0 0 6px; line-height: 1.3; }
+    .wp-number { font-size: 0.8rem; font-weight: 700; color: white; padding: 3px 10px; border-radius: 12px; display: inline-block; margin-bottom: 8px; }
+    .wp-card.wp1 .wp-number { background: var(--wp1-color); } .wp-card.wp2 .wp-number { background: var(--wp2-color); } .wp-card.wp3 .wp-number { background: var(--wp3-color); }
+    .wp-card.wp4 .wp-number { background: var(--wp4-color); } .wp-card.wp5 .wp-number { background: var(--wp5-color); } .wp-card.wp6 .wp-number { background: var(--wp6-color); }
+    .wp-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .wp-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+    .wp-meta-item svg { width: 16px; height: 16px; opacity: 0.7; }
+    .wp-card-desc { color: var(--secondary-text); font-size: 0.95rem; line-height: 1.65; margin-bottom: 20px; }
+    .wp-deliverables { border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px; }
+    .wp-deliverables-toggle { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 8px 0; font-weight: 600; font-size: 0.9rem; color: var(--accent); background: none; border: none; width: 100%; text-align: left; }
+    .wp-deliverables-toggle:hover { color: var(--action-green); }
+    .wp-deliverables-toggle svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
+    .wp-deliverables-toggle.active svg { transform: rotate(180deg); }
+    .wp-deliverables-content { display: none; padding-top: 12px; }
+    .wp-deliverables-content.show { display: block; }
+    .wp-deliverables-content ul { list-style: none; padding: 0; margin: 0; }
+    .wp-deliverables-content li { padding: 8px 0 8px 20px; position: relative; font-size: 0.88rem; color: var(--secondary-text); line-height: 1.5; border-bottom: 1px dashed rgba(0,0,0,0.04); }
+    .wp-deliverables-content li:last-child { border-bottom: none; }
+    .wp-deliverables-content li::before { content: ""; position: absolute; left: 0; top: 14px; width: 8px; height: 8px; border-radius: 50%; }
+    .wp-card.wp1 .wp-deliverables-content li::before { background: var(--wp1-color); opacity: 0.4; }
+    .wp-card.wp2 .wp-deliverables-content li::before { background: var(--wp2-color); opacity: 0.4; }
+    .wp-card.wp3 .wp-deliverables-content li::before { background: var(--wp3-color); opacity: 0.4; }
+    .wp-card.wp4 .wp-deliverables-content li::before { background: var(--wp4-color); opacity: 0.4; }
+    .wp-card.wp5 .wp-deliverables-content li::before { background: var(--wp5-color); opacity: 0.4; }
+    .wp-card.wp6 .wp-deliverables-content li::before { background: var(--wp6-color); opacity: 0.4; }
+    .deliverable-code { font-weight: 600; color: var(--accent); margin-right: 4px; }
+    .knowledge-hub-section { margin: 64px 0; padding: 40px; background: linear-gradient(135deg, rgba(10, 90, 62, 0.04), rgba(8, 145, 178, 0.04)); border-radius: 16px; text-align: center; border: 1px solid rgba(10, 90, 62, 0.1); }
+    .knowledge-hub-section h2 { font-size: 1.25rem; color: var(--accent); margin-bottom: 12px; font-weight: 700; }
+    .knowledge-hub-section p { color: var(--muted); max-width: 60ch; margin: 0 auto 24px; line-height: 1.6; }
+    .knowledge-hub-badge { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: white; border-radius: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); font-weight: 600; color: var(--accent); }
+    .knowledge-hub-badge svg { width: 24px; height: 24px; }
+    @media (max-width: 980px) { .wp-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { 
+      .wp-hero { margin: 16px 0 32px; } 
+      .wp-hero p { font-size: 0.95rem; } 
+      .timeline-section { margin: 32px 0; padding: 24px 0; } 
+      .wp-card { padding: 20px; } 
+      .wp-card-header { flex-direction: column; align-items: flex-start; gap: 12px; } 
+      .wp-meta { flex-direction: column; gap: 8px; } 
+      .knowledge-hub-section { padding: 28px 20px; } 
+      .wp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) { 
+      .wp-grid { grid-template-columns: 1fr; } 
+      .timeline-wrapper { padding: 0 12px 16px; }
+    }
+    @media (max-width: 480px) { 
+     /* .wp-icon { width: 44px; height: 44px; font-size: 1.2rem; } */
+      .wp-card-info h3 { font-size: 1.05rem; } 
+      .wp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="nav-shell">
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+      <!-- left: logo -->
+      <div class="logo-wrap">
+        <a href="../index.html" class="logo-box" id="logoPlaceholder">
+          <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo" onerror="this.style.display='block'; this.parentElement.textContent='LOGO'">
+        </a>
+      </div>
+
+      <!-- center: links -->
+      <ul class="nav-links" role="menubar" aria-label="Primary">
+        <li role="none" class="dropdown">
+          <a role="menuitem" href="#about" class="dropbtn">About</a>
+          <ul class="dropdown-content" role="menu">
+            <li><a role="menuitem" href="about.html">PROMISE Project</a></li>
+            <li><a role="menuitem" href="consortium.html">Consortium</a></li>
+            <li><a role="menuitem" href="work-packages.html">How We Work</a></li>
+          </ul>
+        </li>
+        <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+        <li><a href="news.html" role="menuitem">News</a></li>
+        <li><a href="events.html" role="menuitem">Events</a></li>
+        <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+      </ul>
+
+      <!-- right: CTA (hidden for now) -->
+      <div class="nav-actions">
+        <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel" aria-label="Open menu">☰</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile panel overlay -->
+  <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
+  
+  <!-- Mobile panel -->
+  <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+    <!-- Close button -->
+    <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    
+    <!-- Centered logo -->
+    <div class="mobile-panel-logo">
+      <a href="../index.html">
+        <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+      </a>
+    </div>
+    
+    <!-- Navigation links -->
+    <nav class="mobile-panel-nav">
+      <a href="#about" class="mobile-drop">About</a>
+      <div class="mobile-submenu">
+        <a href="about.html">PROMISE Project</a>
+        <a href="consortium.html">Consortium</a>
+        <a href="work-packages.html">How We Work</a>
+      </div>
+
+      <a href="living-labs.html">Living Labs</a>
+      <a href="news.html">News</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+    
+    <!-- Hidden get involved button in mobile too -->
+    <div class="mobile-bottom-actions" style="display:none;">
+      <button class="btn-cta" id="mobileGetInvolved">Get Involved</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="page">
+    <section class="wp-hero" style="padding-top: 2%;">
+      <h1>How We Work</h1>
+      <p>PROMISE is structured into six interconnected Work Packages spanning 36 months (March 2025 – March 2028). Together, they form a comprehensive framework for reducing car dependency through micro-mobility solutions in the 15-minute city context.</p>
+    </section>
+
+    <section class="wp-grid">
+      <article class="wp-card wp1" id="wp1">
+        <div class="wp-card-header">
+        <!--  <div class="wp-icon">📋</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP1</span>
+            <h3>Project Management and Communication</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M1 – M36</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Dalarna University</span>
+        </div>
+        <p class="wp-card-desc">Oversees the entire project lifecycle including coordination among 14 consortium partners across 5 countries, financial management, risk mitigation, quality assurance, and both internal and external communication strategies.</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T1.1</span> Management and Coordination Plan</li>
+              <li><span class="deliverable-code">T1.2</span> Communication Platform</li>
+              <li><span class="deliverable-code">T1.3</span> Central Data Management Plan</li>
+              <li><span class="deliverable-code">T1.4</span> Quality and Risk Management</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="wp-card wp2" id="wp2">
+        <div class="wp-card-header">
+         <!-- <div class="wp-icon">📚</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP2</span>
+            <h3>Intervention Framework and Behavioral Transformation Guidebook</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M2 – M28</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Smart Innovation Centre</span>
+        </div>
+        <p class="wp-card-desc">Develops a multi-stakeholder collaborative planning framework integrating behavioral science to guide micro-mobility interventions. Creates the Behavioral Transformation Guidebook with strategies for promoting sustainable transport choices.</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T2.1</span> Examining the existing barriers to integrating micro-mobility transportation</li>
+              <li><span class="deliverable-code">T2.2</span> Analysis of relevant initiatives related to micro-mobility in different cities</li>
+              <li><span class="deliverable-code">T2.3</span> Open idea challenges and co-creation workshops</li>
+              <li><span class="deliverable-code">T2.4</span> Guidebook for Behavioral Transformation towards adopting micro-mobility solutions</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="wp-card wp3" id="wp3">
+        <div class="wp-card-header">
+         <!-- <div class="wp-icon">🗺️</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP3</span>
+            <h3>Micro-mobility Decision Support Tool (MDST)</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M10 – M30</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Aalborg University</span>
+        </div>
+        <p class="wp-card-desc">Develops a GIS-based decision support tool that helps urban planners identify optimal locations for micro-mobility infrastructure, hubs, and services. Incorporating technologies such as Machine Learning (ML) and Geospatial Artificial Intelligence (GeoAI) to provide actionable insights, thus accelerating decision-making and promoting micro-mobility for car reduction. accessibility modeling for evidence-based planning.</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T3.1</span> Comparative analysis of the state-of-the-art of Decision Support Tools (DST)</li>
+              <li><span class="deliverable-code">T3.2</span> Collaboration with WP2 to identify the diverse needs of policymakers and stakeholders in the pilot cities</li>
+              <li><span class="deliverable-code">T3.3</span> Cooperate with municipalities via WP4 and use open Street Map (OSM) resources to acquire a wide range of geospatial data</li>
+              <li><span class="deliverable-code">T3.4</span> Based on T3.1, T3.2 and T3.3, design micro-mobility and logistics networks with focus on database, user interface and interactive futures</li>
+              <li><span class="deliverable-code">T3.5</span> Development of an interactive Micro-mobility Decision Support Tool (MDST)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="wp-card wp4" id="wp4">
+        <div class="wp-card-header">
+        <!--  <div class="wp-icon">🔬</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP4</span>
+            <h3>Co-Creation Living Labs with Targeted Pilot Demonstrations</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M12 – M32</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Brașov Metropolitan Agency</span>
+        </div>
+        <p class="wp-card-desc">Implements real-world pilot demonstrations across five Living Lab cities: Brașov (cargo-bike logistics), Osmangazi (first/last-mile connections), Rethymno (tourist mobility), Bochum (short-distance delivery), and Cologne (inclusive cargo-bikes).</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T4.1</span> Operationalize living labs using collaborative frameworks formed in WP2</li>
+              <li><span class="deliverable-code">T4.2</span> Execute five targeted pilot demonstrations across different urban contexts, each designed to tackle specific challenges related to reducing car dependency and advancing micro-mobility solutions</li>
+              <li><span class="deliverable-code">T4.3</span> Systematic collection and management of data essential for the subsequent impact evaluation and performance analysis in WP5</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="wp-card wp5" id="wp5">
+        <div class="wp-card-header">
+        <!--  <div class="wp-icon">📊</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP5</span>
+            <h3>Impact Assessment and Project Evaluation</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M20 – M33</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Dalarna University</span>
+        </div>
+        <p class="wp-card-desc">Evaluates the environmental, social, and economic impacts of pilot interventions. Develops a comprehensive assessment framework measuring modal shift, CO₂ reduction, accessibility improvements, and stakeholder satisfaction.</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T5.1</span> Establish a procedure for evaluating the project's impact, primarily linking to the outputs of WP2, WP3, and WP4 both qualitatively and quantitatively</li>
+              <li><span class="deliverable-code">D5.2</span> retrieve the data and information collected mainly in WP4, WP2, and WP3 (interviews, workshops, the layers of city and transport connecting to the MDST, data in the pilot demonstrations, traffic flow analysis)</li>
+              <li><span class="deliverable-code">D5.3</span> project Impact Report featuring metrics related to modal shift, environmental benefits, accessibility improvements, and stakeholder satisfaction</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="wp-card wp6" id="wp6">
+        <div class="wp-card-header">
+        <!--  <div class="wp-icon">🌐</div> -->
+          <div class="wp-card-info">
+            <span class="wp-number">WP6</span>
+            <h3>Dissemination, Exploitation, and Knowledge Hub Integration</h3>
+          </div>
+        </div>
+        <div class="wp-meta">
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>M24 – M36</span>
+          <span class="wp-meta-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>Lead: Dalarna University</span>
+        </div>
+        <p class="wp-card-desc">Maximizes project impact through strategic dissemination to academic, policy, and practitioner audiences. Integrates all outputs into the DUT Knowledge Hub for long-term accessibility and facilitates knowledge transfer to other European cities.</p>
+        <div class="wp-deliverables">
+          <button class="wp-deliverables-toggle" onclick="toggleDeliverables(this)">Key Tasks<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></button>
+          <div class="wp-deliverables-content">
+            <ul>
+              <li><span class="deliverable-code">T6.1</span> Develop a multi-channel dissemination strategy targeting urban planners, policymakers, industry experts, and the general public to maximize the project's visibility and impact</li>
+              <li><span class="deliverable-code">D6.2</span> Stakeholder engagement in each partner city to facilitate the practical application of project results</li>
+              <li><span class="deliverable-code">D6.3</span> Produce and distribute policy briefs and technical guidelines to assist other European cities interested in adopting micro-mobility solutions developed in PROMISE</li>
+              <li><span class="deliverable-code">D6.4</span> Active integration with DUT Knowledge Hub to share insights and collaborate on the strategic development of transition pathways</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="timeline-section">
+      <h2 class="timeline-title">Project Timeline Overview</h2>
+      <div class="timeline-wrapper">
+        <div class="timeline-container">
+          <div class="timeline-label"></div>
+          <div class="year-marker" style="grid-column: 2 / 12;">2025</div>
+          <div class="year-marker" style="grid-column: 12 / 24;">2026</div>
+          <div class="year-marker" style="grid-column: 24 / 36;">2027</div>
+          <div class="year-marker" style="grid-column: 36 / 38;">2028</div>
+          <div class="timeline-label">Work Package</div>
+          <div class="timeline-month">1</div><div class="timeline-month">2</div><div class="timeline-month">3</div><div class="timeline-month">4</div><div class="timeline-month">5</div><div class="timeline-month">6</div>
+          <div class="timeline-month">7</div><div class="timeline-month">8</div><div class="timeline-month">9</div><div class="timeline-month">10</div><div class="timeline-month">11</div><div class="timeline-month">12</div>
+          <div class="timeline-month">13</div><div class="timeline-month">14</div><div class="timeline-month">15</div><div class="timeline-month">16</div><div class="timeline-month">17</div><div class="timeline-month">18</div>
+          <div class="timeline-month">19</div><div class="timeline-month">20</div><div class="timeline-month">21</div><div class="timeline-month">22</div><div class="timeline-month">23</div><div class="timeline-month">24</div>
+          <div class="timeline-month">25</div><div class="timeline-month">26</div><div class="timeline-month">27</div><div class="timeline-month">28</div><div class="timeline-month">29</div><div class="timeline-month">30</div>
+          <div class="timeline-month">31</div><div class="timeline-month">32</div><div class="timeline-month">33</div><div class="timeline-month">34</div><div class="timeline-month">35</div><div class="timeline-month">36</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp1-dot"></span>WP1</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp1-bar" style="left: 0; right: 0;"></div></div>
+          <div class="timeline-wp-label"><span class="wp-dot wp2-dot"></span>WP2</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp2-bar" style="left: calc((1/36)*100%); right: calc((8/36)*100%);"></div></div>
+          <div class="timeline-wp-label"><span class="wp-dot wp3-dot"></span>WP3</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp3-bar" style="left: calc((9/36)*100%); right: calc((6/36)*100%);"></div></div>
+          <div class="timeline-wp-label"><span class="wp-dot wp4-dot"></span>WP4</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp4-bar" style="left: calc((11/36)*100%); right: calc((4/36)*100%);"></div></div>
+          <div class="timeline-wp-label"><span class="wp-dot wp5-dot"></span>WP5</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp5-bar" style="left: calc((19/36)*100%); right: calc((3/36)*100%);"></div></div>
+          <div class="timeline-wp-label"><span class="wp-dot wp6-dot"></span>WP6</div>
+          <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp6-bar" style="left: calc((23/36)*100%); right: 0;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="knowledge-hub-section">
+      <h2>Connected to DUT Knowledge Hub</h2>
+      <p>All PROMISE outputs will be integrated into the Driving Urban Transitions Knowledge Hub, ensuring open access to tools, guidelines, and best practices for cities across Europe.</p>
+      <div class="knowledge-hub-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+        <a href="https://dutpartnership.eu/15-minute-city/" target="_blank">DUT 15-Minute City Pathway</a>
+      </div>
+    </section>
+  </div>
+
+
+</main>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a >Legal notice</a>
+        <a >Privacy Policy</a>
+        <a >Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a >Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+
+<button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+<script>
+  // ========== Deliverables Toggle ==========
+  function toggleDeliverables(button) {
+    button.classList.toggle('active');
+    const content = button.nextElementSibling;
+    content.classList.toggle('show');
+  }
+
+  // ========== Mobile menu toggle ==========
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
+  const mobilePanelClose = document.getElementById('mobilePanelClose');
+  
+  function toggleMobileMenu(show){
+    const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+    mobilePanel.classList.toggle('show', isShow);
+    mobilePanelOverlay.classList.toggle('show', isShow);
+    menuToggle.setAttribute('aria-expanded', String(isShow));
+    mobilePanel.setAttribute('aria-hidden', String(!isShow));
+    mobilePanelOverlay.setAttribute('aria-hidden', String(!isShow));
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isShow ? 'hidden' : '';
+  }
+  
+  menuToggle.addEventListener('click', ()=> toggleMobileMenu());
+  mobilePanelClose.addEventListener('click', ()=> toggleMobileMenu(false));
+  mobilePanelOverlay.addEventListener('click', ()=> toggleMobileMenu(false));
+
+  // Mobile panel link handling
+  mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const submenu = btn.nextElementSibling;
+      if(submenu && submenu.classList.contains('mobile-submenu')){
+        btn.classList.toggle('active');
+        submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+      } else {
+        toggleMobileMenu(false);
+      }
+    });
+  });
+
+  // ========== Go to Top Button ==========
+  const goToTopBtn = document.getElementById('goToTop');
+
+  // Show/hide button based on scroll position
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      goToTopBtn.classList.add('visible');
+    } else {
+      goToTopBtn.classList.remove('visible');
+    }
+  });
+
+  // Smooth scroll to top when clicked
+  goToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
+<script>
+// Only scroll with offset if coming from a link with hash
+if (window.location.hash) {
+  // Wait for page to load
+  window.addEventListener('load', function() {
+    const element = document.querySelector(window.location.hash);
+    if (element) {
+      const offset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+}
+</script>
+
+</body>
+</html>

@@ -86,3 +86,37 @@ Updates to implement a full-screen slide-in mobile menu and compact mobile foote
 - `contact.html` - Rebuilt entirely; original file was truncated mid-JavaScript and contained Cloudflare email obfuscation artifacts that broke functionality
 
 ## 5. Added white DUT logo, replaced green logo
+
+
+# Changelog - 12-12
+
+## All Sub Pages
+- Removed left green border for **Main Tasks** & **Expertise** sections.
+- Changed long dash to short dash.
+- Added `#wp` links to redirect to specific Work Package (WP) cards on the **Work Packages** page using JavaScript at the end of `work-packages.html`.
+- Added specific styling for WP links:
+  `css`
+  `.publications-section ul li a,`
+  `.content-section a {`
+  `  color: #0a5a3e;`
+  `  text-decoration: none;`
+  `  font-weight: 500;`
+  `}`
+
+  `.publications-section ul li a:hover,`
+  `.content-section a:hover {`
+  `  color: #0a5a3e;`
+  `  text-decoration: underline;`
+  `}`
+
+- Refined and reviewed descriptions, references for publications, and DOI links.
+- Reformatted styling of references.
+
+## All Sub Pages
+- Expanded all descriptions
+
+## About
+- Added CTA button in Our Approach section to redirect to Work Packages
+
+## all pages
+- added linkedin page link to footer

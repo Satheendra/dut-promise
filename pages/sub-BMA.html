@@ -31,7 +31,6 @@
       background: #f8f9fa;
       padding: 24px;
       border-radius: 8px;
-      border-left: 4px solid #0a5a3e;
     }
 
     .content-section h2 {
@@ -60,7 +59,7 @@
     }
 
     .content-section ul li:before {
-      content: "—";
+      content: "-";
       position: absolute;
       left: 0;
       color: #0a5a3e;
@@ -126,7 +125,7 @@
     }
 
     .publications-section {
-      margin-top: 32px;
+      margin-top: 0;
       background: #f8f9fa;
       padding: 24px;
       border-radius: 8px;
@@ -161,14 +160,16 @@
       color: #666;
     }
 
-    .publications-section ul li a {
+    .publications-section ul li a,
+    .content-section a {
       color: #0a5a3e;
       text-decoration: none;
       font-weight: 500;
-      margin-left: 8px;
     }
 
-    .publications-section ul li a:hover {
+    .publications-section ul li a:hover,
+    .content-section a:hover {
+      color: #0a5a3e;
       text-decoration: underline;
     }
 
@@ -199,6 +200,7 @@
             <ul class="dropdown-content" role="menu">
               <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
               <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
             </ul>
           </li>
           <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
@@ -235,6 +237,7 @@
         <div class="mobile-submenu">
           <a href="about.html">PROMISE Project</a>
           <a href="consortium.html">Consortium</a>
+          <a href="work-packages.html">How We Work</a>
         </div>
 
         <a href="living-labs.html">Living Labs</a>
@@ -261,7 +264,7 @@
       <div class="partner-right">
         <h1>Brașov Metropolitan Agency</h1>
         <p class="partner-type">NGO | Romania</p>
-        <p class="partner-desc">Brașov Metropolitan Agency unites 20 public authorities around Brașov, driving sustainable metropolitan and regional development since 2006.</p>
+        <p class="partner-desc">BMA unites 20 public authorities around Brașov, driving sustainable metropolitan and regional development since 2006. It fosters cooperation among member communities, citizens, and stakeholders, facilitating joint implementation of sustainable local development initiatives. BMA's activities range from local community sustainability programs to strategic planning or investment projects, including sustainable urban mobility. With extensive experience in research and territorial cooperation projects, BMA actively engages in regional, national, and European networks and founded Metropolitan Transport Authority (AMDDTPBv).</p>
         
         <div class="partner-section-divider"></div>
         
@@ -269,17 +272,25 @@
           <div class="content-section">
             <h2>Main Tasks in PROMISE</h2>
             <ul>
-              <li>WP4 leader</li>
+              <li> <a href="work-packages.html#wp4">WP4</a> leader, participant in all project activities</li>
               <li>Living Lab coordination for Romania</li>
-              <li>pilot testing of PROMISE framework</li>
+              <li>pilot testing of PROMISE framework and <a href="work-packages.html#wp3">MDST</a></li>
             </ul>
           </div>
+        </div>
 
-          <div class="content-section">
-            <h2>Expertise & Research Focus</h2>
+        <div class="partner-section-divider"></div>
+
+          <div class="publications-section">
+            <h2>Related Experience</h2>
             <ul>
-              <li>Sustainable urban mobility planning, regional development, stakeholder coordination, and SUMP implementation</li>
-            </ul>
+            <li>
+              <a href="https://dutpartnership.eu/projects/conflictedstreets" target="_blank">CONFLICTEDSTREETS</a><strong> (Navigating conflicts over streets and urban space in the transition to the 15mC)</strong> | 2024 - 2026 | Builds knowledge about what generates conflicts in plans for the 15mC and develops guidance on how to deal with such conflicts. A key goal of the project is to learn and build knowledge on planning practices and processes acknowledging the political and contested nature of urban development and change processes associated with road space reallocation. Brasov is one of the pilot cities.
+            </li>
+            <li>
+              <a href="https://dutpartnership.eu/projects/conflictedstreets" target="_blank">SUMP</a> <strong>(Sustainable Urban Mobility Plan)</strong> | 2024 - 2026 | Coordination of the SUMP and transport model development by an international consortium of consultants with the support of the Ministry of Regional Development and Public Administration and the European Bank for Reconstruction and Development.
+            </li>
+           </ul>
           </div>
         </div>
 
@@ -311,7 +322,7 @@
       <div class="promise-footer-social">
         <span>Find us on</span>
         <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
-        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
 
@@ -351,7 +362,24 @@
         }
       });
     });
+    // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
-        goToTopBtn.
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+     </script>

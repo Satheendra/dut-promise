@@ -31,7 +31,6 @@
       background: #f8f9fa;
       padding: 24px;
       border-radius: 8px;
-      border-left: 4px solid #0a5a3e;
     }
 
     .content-section h2 {
@@ -60,7 +59,7 @@
     }
 
     .content-section ul li:before {
-      content: "—";
+      content: "-";
       position: absolute;
       left: 0;
       color: #0a5a3e;
@@ -199,6 +198,7 @@
             <ul class="dropdown-content" role="menu">
               <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
               <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
             </ul>
           </li>
           <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
@@ -235,6 +235,7 @@
         <div class="mobile-submenu">
           <a href="about.html">PROMISE Project</a>
           <a href="consortium.html">Consortium</a>
+          <a href="work-packages.html">How We Work</a>
         </div>
 
         <a href="living-labs.html">Living Labs</a>
@@ -299,14 +300,14 @@
             <div class="personnel-card">
               <h3>Dr. Irma Kveladze</h3>
               <span class="specialization">Specialization: Geovisual Analytics</span>
-              <p>Expert in data-driven decision support systems using combinations of techniques and tools for geospatial data analysis, with extensive experience in developing interactive visualization environments for complex movement data.</p>
+              <p>Dr. Kveladze is specialized in data-driven decision support systems using combinations of techniques and tools for geospatial data analysis, with extensive experience in developing interactive visualization environments for complex movement data.</p>
               <a href="https://orcid.org/0000-0003-4106-1195" target="_blank" class="orcid-link">ORCID: 0000-0003-4106-1195</a>
             </div>
 
             <div class="personnel-card">
               <h3>Prof. Jamal Jokar Arsanjani</h3>
               <span class="specialization">Specialization: Geographic Data Science</span>
-              <p>Expert in incorporating geographical data, tools, and models into interdisciplinary approaches required for data-driven decision-making processes for sustainable urban development.</p>
+              <p>Prof. Arsanjani is specialized in incorporating geographical data, tools, and models into interdisciplinary approaches required for data-driven decision-making processes for sustainable urban development.</p>
               <a href="https://orcid.org/0000-0001-6347-2935" target="_blank" class="orcid-link">ORCID: 0000-0001-6347-2935</a>
             </div>
           </div>
@@ -318,20 +319,20 @@
           <h2>Selected Publications</h2>
           <ul>
             <li>
-              <strong>Kveladze, I., Jokinen, J., Tapia, C. and Hansen, H.S.</strong> (2024). What Can Location-Based Social Media Reveal on Human Migration Patterns in Europe? <em>Journal of Maps</em>, 20(1). 
+              <strong>Kveladze, I., Jokinen, J., Tapia, C. and Hansen, H.S.</strong> (2024). What Can Location-Based Social Media Reveal on Human Migration Patterns in Europe? <em>Journal of Maps, 20(1).</em> JoM 2023. 
               <a href="https://doi.org/10.1080/17445647.2024.2329168" target="_blank">DOI</a>
             </li>
             <li>
-              <strong>Kveladze, I., Keßler, C. and Hansen, H.S.</strong> (2023). Analysis of human migration patterns: use cases of Amsterdam and Copenhagen. <em>LBS</em>, 17(4). 
+              <strong>Kveladze, I., Keßler, C. and Hansen, H.S.</strong> (2023). Analysis of human migration patterns: use cases of Amsterdam and Copenhagen. <em>LBS, 17(4).</em> 
               <a href="https://doi.org/10.1080/17489725.2023.2238658" target="_blank">DOI</a>
             </li>
             <li>
-              <strong>Kveladze, I. and Agerholm, N.</strong> (2020). GeoVisual analytics for understanding the distribution of speeding patterns on arterial roads. <em>LBS</em>, 14(3), 201-230. 
+              <strong>Kveladze, I. and Agerholm, N.</strong> (2020). GeoVisual analytics for understanding the distribution of speeding patterns on arterial roads: assessing the traffic safety of vulnerable road users,<em>LBS, 14(3), 201-230.</em> 
               <a href="https://doi.org/10.1080/17489725.2020.1823497" target="_blank">DOI</a>
             </li>
             <li>
-              <strong>Kveladze, I., Kraak, M.J., and van Elzakker, C.P.J.M.</strong> (2015). The space-time cube as part of a GeoVisual analytics environment to support the understanding of movement data. <em>IJGIS</em>, 29(11), 2001-2016. 
-              <a href="https://doi.org/10.1080/13658816.2015.1058386" target="_blank">DOI</a>
+              <strong>Kveladze, I., Kraak, M.J., and van Elzakker, C.P.J.M.</strong> (2017). The Usability of a GeoVisual Analytics Environment for the Exploration and Analysis of Different Datasets. <em>ICACI 2017. Springer, Cham.</em>
+              <a href="https://doi.org/10.1007/978-3-319-57336-6_15" target="_blank">DOI</a>
             </li>
           </ul>
         </section>
@@ -363,7 +364,7 @@
       <div class="promise-footer-social">
         <span>Find us on</span>
         <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
-        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
 
@@ -403,7 +404,24 @@
         }
       });
     });
+    // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
-        goToTopBtn.classList.add('v
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+     </script>

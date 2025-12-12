@@ -60,7 +60,7 @@
     }
 
     .content-section ul li:before {
-      content: "—";
+      content: "-";
       position: absolute;
       left: 0;
       color: #0a5a3e;
@@ -126,7 +126,7 @@
     }
 
     .publications-section {
-      margin-top: 32px;
+      margin-top: 0;
       background: #f8f9fa;
       padding: 24px;
       border-radius: 8px;
@@ -161,16 +161,19 @@
       color: #666;
     }
 
-    .publications-section ul li a {
+    .publications-section ul li a,
+    .content-section a {
       color: #0a5a3e;
       text-decoration: none;
       font-weight: 500;
-      margin-left: 8px;
     }
 
-    .publications-section ul li a:hover {
+    .publications-section ul li a:hover,
+    .content-section a:hover {
+      color: #0a5a3e;
       text-decoration: underline;
     }
+
 
     .partner-right h1 {
       color: #0a5a3e;
@@ -199,6 +202,7 @@
             <ul class="dropdown-content" role="menu">
               <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
               <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
             </ul>
           </li>
           <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
@@ -235,6 +239,7 @@
         <div class="mobile-submenu">
           <a href="about.html">PROMISE Project</a>
           <a href="consortium.html">Consortium</a>
+          <a href="work-packages.html">How We Work</a>
         </div>
 
         <a href="living-labs.html">Living Labs</a>
@@ -269,15 +274,25 @@
           <div class="content-section">
             <h2>Main Tasks in PROMISE</h2>
             <ul>
-              <li>Living Lab coordination for Greece</li>
-              <li>Micro-mobility pilot for tourist areas</li>
+              <li>Living Lab coordination for Rethymno, Greece</li>
             </ul>
           </div>
+        </div>
 
-          <div class="content-section">
-            <h2>Expertise & Research Focus</h2>
+        <div class="partner-section-divider"></div>
+
+          <div class="publications-section">
+            <h2>Related Experience</h2>
             <ul>
-              <li>Sustainable tourism, micro-mobility integration, and urban planning for heritage cities</li>
+            <li>
+              <a href="https://urbact.eu/networks/schoolhoods" target="_blank">SCHOOLHOODS</a> (Ongoing) - Lead partner of the project “Schools as the focal point of an integrated planning approach 15-minute neighborhoods and a green urban mobility transition” 
+            </li>
+            <li>
+              <a href="https://incircle.interreg-med.eu/" target="_blank">INCIRCLE</a> - Enhance the sustainability and attractiveness of MED touristic insular and low-density areas through Circular Tourism, preserving the quality and availability of natural resources as well as improving the quality of life of residents & tourists. 
+            </li>
+            <li>
+              <a href="https://cleanbusplatform.eu/" target="_blank">Clean Bus Europe Platform</a> - Supporting cities in their transition to clean bus fleets, and foresees activities supporting knowledge exchange. 
+            </li>
             </ul>
           </div>
         </div>
@@ -310,7 +325,7 @@
       <div class="promise-footer-social">
         <span>Find us on</span>
         <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
-        <a aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
 
@@ -350,7 +365,24 @@
         }
       });
     });
+    // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
+
+    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
-        goToTopBtn.classList.a
+        goToTopBtn.classList.add('visible');
+      } else {
+        goToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+     </script>

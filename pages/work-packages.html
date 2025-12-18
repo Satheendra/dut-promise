@@ -69,6 +69,11 @@
     .wp-card.wp5 .wp-deliverables-content li::before { background: var(--wp5-color); opacity: 0.4; }
     .wp-card.wp6 .wp-deliverables-content li::before { background: var(--wp6-color); opacity: 0.4; }
     .deliverable-code { font-weight: 600; color: var(--accent); margin-right: 4px; }
+    .info-button { display: inline-block; width: 16px; height: 16px; border-radius: 50%; background-color: var(--muted); color: white; text-align: center; line-height: 16px; font-size: 10px; cursor: pointer; margin-left: 6px; position: relative; user-select: none; font-style: italic; font-weight: bold; }
+    .info-button:hover { background-color: #1976D2; }
+    .tooltip { visibility: hidden; position: absolute; background-color: #333; color: white; padding: 6px 10px; border-radius: 4px; font-size: 11px; font-weight: normal; white-space: nowrap; z-index: 1000; left: 100%; top: 50%; transform: translateY(-50%); margin-left: 8px; opacity: 0; transition: opacity 0.3s; }
+    .tooltip::before { content: ""; position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-right-color: #333; }
+    .tooltip.show { visibility: visible; opacity: 1; }
     .knowledge-hub-section { margin: 64px 0; padding: 40px; background: linear-gradient(135deg, rgba(10, 90, 62, 0.04), rgba(8, 145, 178, 0.04)); border-radius: 16px; text-align: center; border: 1px solid rgba(10, 90, 62, 0.1); }
     .knowledge-hub-section h2 { font-size: 1.25rem; color: var(--accent); margin-bottom: 12px; font-weight: 700; }
     .knowledge-hub-section p { color: var(--muted); max-width: 60ch; margin: 0 auto 24px; line-height: 1.6; }
@@ -351,17 +356,17 @@
           <div class="timeline-month">19</div><div class="timeline-month">20</div><div class="timeline-month">21</div><div class="timeline-month">22</div><div class="timeline-month">23</div><div class="timeline-month">24</div>
           <div class="timeline-month">25</div><div class="timeline-month">26</div><div class="timeline-month">27</div><div class="timeline-month">28</div><div class="timeline-month">29</div><div class="timeline-month">30</div>
           <div class="timeline-month">31</div><div class="timeline-month">32</div><div class="timeline-month">33</div><div class="timeline-month">34</div><div class="timeline-month">35</div><div class="timeline-month">36</div>
-          <div class="timeline-wp-label"><span class="wp-dot wp1-dot"></span>WP1</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp1-dot"></span>WP1<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Project Management and Communication</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp1-bar" style="left: 0; right: 0;"></div></div>
-          <div class="timeline-wp-label"><span class="wp-dot wp2-dot"></span>WP2</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp2-dot"></span>WP2<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Behavioral Transformation Guidebook</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp2-bar" style="left: calc((1/36)*100%); right: calc((8/36)*100%);"></div></div>
-          <div class="timeline-wp-label"><span class="wp-dot wp3-dot"></span>WP3</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp3-dot"></span>WP3<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Micro-mobility Decision Support Tool</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp3-bar" style="left: calc((9/36)*100%); right: calc((6/36)*100%);"></div></div>
-          <div class="timeline-wp-label"><span class="wp-dot wp4-dot"></span>WP4</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp4-dot"></span>WP4<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Implementing PROMISE in Living Labs</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp4-bar" style="left: calc((11/36)*100%); right: calc((4/36)*100%);"></div></div>
-          <div class="timeline-wp-label"><span class="wp-dot wp5-dot"></span>WP5</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp5-dot"></span>WP5<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Impact Assessment and Project Evaluation</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp5-bar" style="left: calc((19/36)*100%); right: calc((3/36)*100%);"></div></div>
-          <div class="timeline-wp-label"><span class="wp-dot wp6-dot"></span>WP6</div>
+          <div class="timeline-wp-label"><span class="wp-dot wp6-dot"></span>WP6<span class="info-button" onclick="toggleTooltip(this)">i<span class="tooltip">Dissemination and Knowledge Hub Integration</span></span></div>
           <div class="timeline-cell" style="grid-column: 2 / 38;"><div class="timeline-bar wp6-bar" style="left: calc((23/36)*100%); right: 0;"></div></div>
         </div>
       </div>
@@ -422,6 +427,32 @@
     const content = button.nextElementSibling;
     content.classList.toggle('show');
   }
+
+  // ========== Tooltip Toggle ==========
+  function toggleTooltip(button) {
+    event.stopPropagation();
+    const tooltip = button.querySelector('.tooltip');
+    const isCurrentlyShown = tooltip.classList.contains('show');
+    
+    // Close all other tooltips
+    document.querySelectorAll('.tooltip.show').forEach(function(t) {
+      t.classList.remove('show');
+    });
+    
+    // Toggle current tooltip
+    if (!isCurrentlyShown) {
+      tooltip.classList.add('show');
+    }
+  }
+
+  // Close tooltip when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.info-button')) {
+      document.querySelectorAll('.tooltip.show').forEach(function(tooltip) {
+        tooltip.classList.remove('show');
+      });
+    }
+  });
 
   // ========== Mobile menu toggle ==========
   const menuToggle = document.getElementById('menuToggle');

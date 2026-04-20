@@ -30,3 +30,6 @@ assets/tmp/
 # Optional: compiled CSS or JS (if using pre-processors or bundlers)
 *.css.map
 *.js.map
+
+# Local mirror / backup folder
+dut-promise/

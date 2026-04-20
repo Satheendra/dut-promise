@@ -65,6 +65,147 @@
     main {
       flex: 1;
     }
+
+    /* Past events year group — hidden by default, animates in */
+    #group2025 {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.22s ease;
+    }
+
+    /* Clickable event row */
+    .event-row {
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.15s ease;
+      padding: 10px 8px;
+      margin: 0 -8px;
+    }
+    .event-row:hover { background: #f6faf8; }
+    .event-row.expanded { background: #f6faf8; }
+
+    /* Chevron indicator */
+    .event-chevron {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      font-size: 1.1rem;
+      color: #0a5a3e;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+    .event-row.expanded .event-chevron { transform: rotate(180deg); }
+
+    /* Expandable event detail panel */
+    .event-detail {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 0;
+      transition: max-height 0.4s ease, opacity 0.28s ease, padding 0.35s ease;
+    }
+    .event-detail.open {
+      max-height: 800px;
+      opacity: 1;
+      padding: 20px 0 32px;
+      border-bottom: 1px solid #e4eaed;
+    }
+    .event-detail img {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 700px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .event-detail img.img-compact { width: 420px; max-width: 420px; }
+    .event-detail-text {
+      color: #70858f;
+      line-height: 1.75;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* No green hover on filter buttons */
+    .filter-btn:hover { background: transparent; }
+
+    /* View Past Events button — only overrides on top of filter-btn */
+    .btn-past-toggle {
+      border-color: #b3d9c7;
+      color: #0a5a3e;
+    }
+    .btn-past-toggle:hover, .btn-past-toggle.active { background: #e6f4ee; }
+
+    /* Custom location dropdown */
+    .custom-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle { display: flex; align-items: center; gap: 8px; }
+    .dropdown-toggle:hover { background: transparent !important; }
+    .dropdown-arrow { display: inline-block; transition: transform 0.25s ease; font-size: 0.85em; }
+    .custom-dropdown.open .dropdown-arrow { transform: rotate(180deg); }
+    .custom-dropdown.open .dropdown-toggle {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+      background: #fff;
+      transition: border-radius 0.15s ease;
+    }
+    .dropdown-panel {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 100%;
+      background: #fff;
+      border: 1px solid #cfeee0;
+      border-top: none;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+      transform-origin: top center;
+      transform: scaleY(0);
+      opacity: 0;
+      transition: transform 0.22s ease, opacity 0.18s ease;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .custom-dropdown.open .dropdown-panel {
+      transform: scaleY(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .dropdown-option {
+      padding: 9px 16px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #70858f;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .dropdown-option:hover { background: #f4f7f9; }
+    .dropdown-option.selected { color: #0a5a3e; }
+
+    @media (max-width: 768px) {
+      .event-detail { flex-direction: column; }
+      .event-detail img.img-compact { width: 100%; max-width: 100%; }
+    }
+    .badge-upcoming {
+      display: inline-block;
+      background: #e6f4ee;
+      color: #0a5a3e;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+      border: 1px solid #b3d9c7;
+    }
   </style>
 </head>
 <body>
@@ -132,100 +273,71 @@
     </div>
   </header>
 
-  <!-- ---------------- Main / Events content (HIDDEN - content preserved) ---------------- -->
-  <main style="display:none;">
+  <!-- ---------------- Main / Events content ---------------- -->
+  <main>
     <div class="page">
       <section class="events-hero">
         <h1>Events</h1>
-        <p>From informal conversations in the Urban Lunch Talks webinar series to policy conferences — PROMISE events bring together stakeholders to exchange knowledge, build capacity and drive sustainable urban transitions.</p>
+        <p>From informal conversations in the Urban Lunch Talks webinar series to policy conferences, PROMISE events bring together stakeholders to exchange knowledge, build capacity and drive sustainable urban transitions.</p>
       </section>
 
       <div class="events-controls" role="region" aria-label="Events filters">
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
           <button class="filter-btn">Event Category ▾</button>
-          <button class="filter-btn">Location ▾</button>
+          <div class="custom-dropdown" id="locationDropdown">
+            <button class="filter-btn dropdown-toggle" id="locationToggle" aria-haspopup="listbox" aria-expanded="false">
+              <span class="dropdown-label">All locations</span>
+              <span class="dropdown-arrow">▾</span>
+            </button>
+            <div class="dropdown-panel" role="listbox">
+              <div class="dropdown-option selected" data-value="" role="option">All locations</div>
+              <div class="dropdown-option" data-value="online" role="option">Online</div>
+              <div class="dropdown-option" data-value="in-person" role="option">In-person</div>
+            </div>
+          </div>
         </div>
         <div style="width:28px"></div>
-        <div class="toggle-row">
-          <label for="pastToggle">Past events</label>
-          <input id="pastToggle" type="checkbox" />
-        </div>
+        <button class="filter-btn btn-past-toggle" id="pastToggle" aria-pressed="false">View Past Events</button>
       </div>
 
       <div class="events-list" role="list">
 
-        <div class="year-group" aria-labelledby="year2025">
+        <div class="year-group" aria-labelledby="year2026">
+          <h2 id="year2026">2026</h2>
+          <div class="year-divider" aria-hidden="true"></div>
+
+          <div class="event-row" data-location="in-person" role="listitem">
+            <div class="event-date">28 APR 2026 - 29 APR 2026</div>
+            <div class="event-location">Brașov, Romania</div>
+            <div class="event-title">PROMISE Onsite Meeting <span class="badge-upcoming">Upcoming</span></div>
+            <span class="event-chevron" aria-hidden="true">▾</span>
+          </div>
+          <div class="event-detail">
+            <img src="../assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania" class="img-compact">
+            <p class="event-detail-text">The full PROMISE consortium comes together in Brașov for two days of focused progress review and collaborative planning. WP leaders from WP1 to WP4 will share focused updates, followed by joint discussion on dependencies and bottlenecks. City partners will present their data, challenges and expectations in a dedicated dialogue session. An interactive Living Lab requirements workshop will define and prioritize essential components, while a guided site visit grounds the work in real-world mobility observations across the city. The meeting closes with final alignment on WP timelines, milestones and priority actions for the year ahead.</p>
+          </div>
+
+        </div>
+
+        <div class="year-group" id="group2025" aria-labelledby="year2025">
           <h2 id="year2025">2025</h2>
           <div class="year-divider" aria-hidden="true"></div>
 
-          <div class="event-row" role="listitem">
-            <div class="event-date">15 OCT 2025 — 15 OCT 2025</div>
-            <div class="event-location">Brussels</div>
-            <div class="event-title">How to make urban resilience work: city case studies and the role of research and innovation</div>
-            <button class="event-action" aria-label="Open event">→</button>
-          </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">23 OCT 2025 — 23 OCT 2025</div>
+          <div class="event-row past-event" data-location="online" role="listitem">
+            <div class="event-date">30 MAR 2025</div>
             <div class="event-location">Online</div>
-            <div class="event-title">DUT City Panel</div>
-            <button class="event-action" aria-label="Open event">→</button>
+            <div class="event-title">PROMISE Project Kick-off Meeting</div>
+            <span class="event-chevron" aria-hidden="true">▾</span>
           </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">6 NOV 2025 — 6 NOV 2025</div>
-            <div class="event-location">Rio de Janeiro</div>
-            <div class="event-title">Urban Transitions Mission Global Innovation Summit 2025</div>
-            <button class="event-action" aria-label="Open event">→</button>
-          </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
-            <div class="event-location">Location</div>
-            <div class="event-title">Event Title</div>
-            <button class="event-action" aria-label="Open event">→</button>
-          </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
-            <div class="event-location">Location</div>
-            <div class="event-title">Event Title</div>
-            <button class="event-action" aria-label="Open event">→</button>
-          </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
-            <div class="event-location">Location</div>
-            <div class="event-title">Event Title</div>
-            <button class="event-action" aria-label="Open event">→</button>
-          </div>
-
-          <div class="event-row" role="listitem">
-            <div class="event-date">DD MMM YYYY — DD MMM YYYY</div>
-            <div class="event-location">Location</div>
-            <div class="event-title">Event Title</div>
-            <button class="event-action" aria-label="Open event">→</button>
+          <div class="event-detail past-event">
+            <img src="../assets/Events/kickoff-march-2025.png" alt="PROMISE kick-off meeting">
+            <p class="event-detail-text">Last March, PROMISE officially kicked off. Researchers, urban planners, and AI specialists from across Europe came together for our launch meeting, sharing one goal: to reduce car dependency in European cities. Working on the 15-minute city concept, the project co-creates solutions with cities, tests them in real-world living labs, and builds tools that help planners make evidence-based decisions about micro-mobility infrastructure. Over three years, PROMISE combines research, technology, and collaboration to tackle one of urban planning's toughest challenges: how do we move people efficiently while keeping our cities livable, sustainable, and inclusive?</p>
           </div>
 
         </div>
 
       </div>
     </div>
-  </main>
-
-  <!-- ---------------- Events Hero ---------------- -->
-  <main>
-    <section class="events-hero-section">
-      <div class="events-hero-content">
-        <h1 class="events-hero-title">Events</h1>
-        <p class="events-hero-subtitle">
-          Stay tuned for upcoming events!
-        </p>
-        <p class="events-hero-description">
-          We're currently planning exciting workshops, webinars, and conferences to bring together stakeholders from across Europe. Check back soon for updates on PROMISE events where we'll exchange knowledge and drive sustainable urban transitions together.
-        </p>
-      </div>
-    </section>
   </main>
 
   <!-- Go to Top Button -->
@@ -297,6 +409,87 @@
       });
     });
     
+    // ========== Filters ==========
+    const pastToggleBtn = document.getElementById('pastToggle');
+    const locationDropdown = document.getElementById('locationDropdown');
+    const locationToggle = document.getElementById('locationToggle');
+    let locationValue = '';
+    let showPast = false;
+
+    function applyFilters() {
+      document.querySelectorAll('.event-row').forEach(row => {
+        const locMatch = !locationValue || row.dataset.location === locationValue;
+        row.style.display = locMatch ? 'grid' : 'none';
+        if (!locMatch) {
+          const detail = row.nextElementSibling;
+          if (detail && detail.classList.contains('event-detail')) {
+            detail.classList.remove('open');
+            row.classList.remove('expanded');
+          }
+        }
+      });
+    }
+
+    const group2025 = document.getElementById('group2025');
+
+    pastToggleBtn.addEventListener('click', () => {
+      showPast = !showPast;
+      pastToggleBtn.classList.toggle('active', showPast);
+      pastToggleBtn.setAttribute('aria-pressed', showPast);
+      pastToggleBtn.textContent = showPast ? 'Hide Past Events' : 'View Past Events';
+
+      if (showPast) {
+        group2025.style.maxHeight = group2025.scrollHeight + 'px';
+        group2025.style.opacity = '1';
+        group2025.addEventListener('transitionend', () => {
+          group2025.style.maxHeight = 'none';
+        }, { once: true });
+      } else {
+        group2025.querySelectorAll('.event-detail.open').forEach(detail => {
+          detail.classList.remove('open');
+          detail.previousElementSibling?.classList.remove('expanded');
+        });
+        group2025.style.maxHeight = group2025.scrollHeight + 'px';
+        group2025.offsetHeight; // force reflow
+        group2025.style.maxHeight = '0';
+        group2025.style.opacity = '0';
+      }
+    });
+
+    locationToggle.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = locationDropdown.classList.toggle('open');
+      locationToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', () => {
+      locationDropdown.classList.remove('open');
+      locationToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    document.querySelectorAll('.dropdown-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        locationValue = opt.dataset.value;
+        document.querySelectorAll('.dropdown-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        locationToggle.querySelector('.dropdown-label').textContent = opt.textContent;
+        locationDropdown.classList.remove('open');
+        locationToggle.setAttribute('aria-expanded', 'false');
+        applyFilters();
+      });
+    });
+
+    // ========== Expand / collapse event detail (whole row clickable) ==========
+    document.querySelectorAll('.event-row').forEach(row => {
+      const detail = row.nextElementSibling;
+      if (detail && detail.classList.contains('event-detail')) {
+        row.addEventListener('click', () => {
+          const isOpen = detail.classList.toggle('open');
+          row.classList.toggle('expanded', isOpen);
+        });
+      }
+    });
+
     // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
 

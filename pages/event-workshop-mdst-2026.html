@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>International Workshop: How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/promise_favicon_32x32.png">
+
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    /* ---- Static back link ---- */
+    .event-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #70858f;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 28px 0 0;
+      transition: color 0.15s ease;
+    }
+    .event-back:hover { color: #0a5a3e; }
+    .event-back-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* ---- Hero ---- */
+    .event-page-hero {
+      text-align: center;
+      padding: 40px 16px 36px;
+    }
+    .event-page-kicker {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #0a5a3e;
+      margin: 0 0 12px;
+    }
+    .event-page-title {
+      font-size: clamp(22px, 3.8vw, 40px);
+      font-weight: 800;
+      color: #0d2e22;
+      line-height: 1.2;
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+    .event-page-location-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #70858f;
+    }
+
+    /* ---- Info card ---- */
+    .event-info-card {
+      background: #1a4a35;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      margin: 0 0 44px;
+    }
+    .event-info-image {
+      flex: 0 0 52%;
+      background: #f0f5f2;
+      display: flex;
+      align-items: stretch;
+    }
+    .event-info-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .event-info-meta {
+      flex: 1;
+      padding: 36px 36px 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .meta-row {
+      padding: 14px 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.12);
+    }
+    .meta-row:first-child { padding-top: 0; }
+    .meta-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .meta-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 5px;
+    }
+    .meta-value {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    /* ---- Description ---- */
+    .event-description {
+      max-width: 720px;
+      margin: 0 auto 56px;
+      color: #70858f;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .event-description p + p { margin-top: 22px; }
+
+    /* ---- Agenda inside dark card ---- */
+    .card-agenda-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin: 20px 0 0;
+      padding-top: 18px;
+      border-top: 1px dotted rgba(255,255,255,0.12);
+    }
+    .card-agenda-list { margin-top: 4px; }
+    .card-agenda-item {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.12);
+    }
+    .card-agenda-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .card-agenda-num {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.4);
+      width: 20px;
+    }
+    .card-agenda-text {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+    }
+
+    /* Links inside the dark card */
+    .event-info-meta a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,0.35);
+      transition: text-decoration-color 0.15s ease;
+    }
+    .event-info-meta a:hover {
+      text-decoration-color: rgba(255,255,255,0.9);
+    }
+
+    /* Links in description */
+    .event-description a {
+      color: #0a5a3e;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(10,90,62,0.3);
+      transition: text-decoration-color 0.15s ease;
+    }
+    .event-description a:hover { text-decoration-color: #0a5a3e; }
+
+    /* ---- Floating register button ---- */
+    .btn-register-float {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 116px;
+      height: 116px;
+      border-radius: 50%;
+      background: #33AB6D;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: background 0.18s ease, transform 0.18s ease;
+      box-shadow: 0 8px 28px rgba(51,171,109,0.45);
+    }
+    .btn-register-float:hover {
+      background: #2a9159;
+      transform: translateY(-50%) scale(1.07);
+      box-shadow: 0 12px 32px rgba(51,171,109,0.55);
+    }
+    .btn-register-float .reg-text {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-indent: 0.13em; /* compensate trailing letter-spacing */
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .btn-register-float .reg-arrow {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .event-info-card { flex-direction: column; }
+      .event-info-image { min-height: 260px; flex: none; }
+      .event-info-meta { padding: 28px 24px; }
+      .btn-register-float {
+        top: auto;
+        bottom: 24px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        height: auto;
+        border-radius: 50px;
+        padding: 14px 32px;
+        flex-direction: row;
+        gap: 12px;
+        white-space: nowrap;
+      }
+      .btn-register-float:hover {
+        transform: translateX(-50%) scale(1.03);
+      }
+      .btn-register-float .reg-text {
+        font-size: 0.82rem;
+        letter-spacing: 0.13em;
+        text-indent: 0.13em;
+        width: auto;
+      }
+      .btn-register-float .reg-arrow {
+        font-size: 1.2rem;
+        margin-top: 0;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <!-- Mobile panel overlay -->
+    <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile panel -->
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="mobile-panel-logo">
+        <a href="../index.html">
+          <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+        </a>
+      </div>
+      <nav class="mobile-panel-nav">
+        <a href="#about" class="mobile-drop">About</a>
+        <div class="mobile-submenu">
+          <a href="about.html">PROMISE Project</a>
+          <a href="consortium.html">Consortium</a>
+          <a href="work-packages.html">How We Work</a>
+        </div>
+        <a href="living-labs.html">Living Labs</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ---------------- Main content ---------------- -->
+  <main>
+    <div class="page">
+
+      <a href="events.html" class="event-back">
+        <span class="event-back-icon">←</span>
+        all events
+      </a>
+
+      <!-- Hero -->
+      <section class="event-page-hero">
+        <p class="event-page-kicker">International Workshop</p>
+        <h1 class="event-page-title">How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility</h1>
+        <span class="event-page-location-badge">Online</span>
+      </section>
+
+      <!-- Info card -->
+      <div class="event-info-card">
+        <div class="event-info-image">
+          <img src="../assets/Events/workshop-mdst-2026.png" alt="International Workshop flyer — How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility">
+        </div>
+        <div class="event-info-meta">
+          <div class="meta-row" style="padding-top:0">
+            <span class="meta-label">Organised by</span>
+            <span class="meta-value">
+              <a href="sub-sic.html">Sustainability InnoCenter</a> &amp; <a href="sub-AAU.html">Aalborg University</a>
+            </span>
+          </div>
+
+          <p class="card-agenda-title">Agenda</p>
+          <div class="card-agenda-list">
+            <div class="card-agenda-item">
+              <span class="card-agenda-num">01</span>
+              <span class="card-agenda-text">Welcome and introduction</span>
+            </div>
+            <div class="card-agenda-item">
+              <span class="card-agenda-num">02</span>
+              <span class="card-agenda-text">Initial demo of the <a href="work-packages.html#wp3">Micro-Mobility Decision Support Tool (MDST)</a>, presented by <a href="sub-AAU.html">Aalborg University</a></span>
+            </div>
+            <div class="card-agenda-item">
+              <span class="card-agenda-num">03</span>
+              <span class="card-agenda-text">Discussion sessions: stakeholder feedback on the tool and potential areas for improvement</span>
+            </div>
+            <div class="card-agenda-item">
+              <span class="card-agenda-num">04</span>
+              <span class="card-agenda-text">Breakout rooms by Living Lab city: Brașov, Osmangazi, Rethymno, Bochum, and Cologne</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <section class="event-description">
+        <p>This online workshop invites researchers, urban planners, and mobility practitioners to explore how digital decision-support tools can guide smarter micro-mobility planning. Organised by <a href="sub-sic.html">Sustainability InnoCenter</a> and <a href="sub-AAU.html">Aalborg University</a> as part of the PROMISE project, the session presents the <a href="work-packages.html#wp3">Micro-Mobility Decision Support Tool (MDST)</a> under development and its application across PROMISE living lab cities.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Floating register button -->
+  <a class="btn-register-float"
+     href="https://forms.office.com/pages/responsepage.aspx?id=aTJ7Tepp9UeMG9vECahAsLPZ_LA36QhEjA08Jtj02_pUM1hDUk4yMkhERzlDT1hKMkk2SldCVldFQy4u&route=shorturl"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Register for the workshop">
+    <span class="reg-text">REGISTER</span>
+    <span class="reg-arrow">→</span>
+  </a>
+
+  <!-- Go to Top Button -->
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <!-- ---------------- Footer ---------------- -->
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+          <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+
+      <div class="promise-footer-links">
+        <a>Legal notice</a>
+        <a>Privacy Policy</a>
+        <a>Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a>Press</a>
+      </div>
+
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+
+    <div class="promise-footer-copy">
+      &copy; 2025 Promise Project
+    </div>
+  </footer>
+
+  <!-- ---------------- Scripts ---------------- -->
+  <script>
+    // Mobile toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
+    const mobilePanelClose = document.getElementById('mobilePanelClose');
+
+    function toggleMobileMenu(show) {
+      const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show', isShow);
+      mobilePanelOverlay.classList.toggle('show', isShow);
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', String(isShow));
+      mobilePanel.setAttribute('aria-hidden', String(!isShow));
+      mobilePanelOverlay.setAttribute('aria-hidden', String(!isShow));
+      document.body.style.overflow = isShow ? 'hidden' : '';
+    }
+    if (menuToggle) menuToggle.addEventListener('click', () => toggleMobileMenu());
+    if (mobilePanelClose) mobilePanelClose.addEventListener('click', () => toggleMobileMenu(false));
+    if (mobilePanelOverlay) mobilePanelOverlay.addEventListener('click', () => toggleMobileMenu(false));
+
+    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const submenu = btn.nextElementSibling;
+        if (submenu && submenu.classList.contains('mobile-submenu')) {
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+        } else {
+          toggleMobileMenu(false);
+        }
+      });
+    });
+
+    // Go to Top
+    const goToTopBtn = document.getElementById('goToTop');
+    window.addEventListener('scroll', () => {
+      goToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
+    });
+    goToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

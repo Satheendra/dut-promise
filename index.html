@@ -132,6 +132,32 @@
         font-size: 0.85rem !important;
       }
     }
+
+    /* ---- Homepage event row (matches events page style) ---- */
+    a.event-row {
+      color: inherit;
+      text-decoration: none;
+    }
+    a.event-row:hover { background: #f6faf8; }
+
+    .event-arrow-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0a5a3e;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    a.event-row:hover .event-arrow-btn {
+      background: #0d7350;
+      transform: translateX(3px);
+    }
   </style>
 </head>
 <body>
@@ -241,37 +267,19 @@
     <section class="home-events" aria-labelledby="homeEventsTitle">
       <div class="home-events-inner">
         <div class="home-events-head">
-          <h2 id="homeEventsTitle">Events</h2>
+          <h2 id="homeEventsTitle">Join Our Events</h2>
           <p class="home-events-intro">
             From short webinars to international summits, PROMISE hosts events to exchange knowledge and support sustainable urban transitions.
           </p>
         </div>
 
-        <div class="home-events-cards" role="list" aria-label="Recent and upcoming events">
-
-          <article class="home-event" role="listitem">
-            <div class="home-event-row">
-              <div class="home-event-date">28-29 APR 2026</div>
-              <div class="home-event-title">PROMISE Onsite Meeting</div>
-              <div class="home-event-loc">Brașov, Romania</div>
-              <span class="badge-upcoming">Upcoming</span>
-            </div>
-            <img class="home-event-thumb" src="assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania">
-            <p class="home-event-desc">The full consortium comes together in Brașov for two days of progress reviews, Living Lab workshops, and a guided site visit.</p>
-            <a href="pages/events.html#event-brasov-2026" class="home-event-readmore">Read more</a>
-          </article>
-
-          <article class="home-event" role="listitem">
-            <div class="home-event-row">
-              <div class="home-event-date">4-5 SEP 2025</div>
-              <div class="home-event-title">PROMISE Second Coordination Meeting</div>
-              <div class="home-event-loc">Essen, Germany</div>
-            </div>
-            <img class="home-event-thumb" src="assets/Events/essen-1.png" alt="PROMISE Second Coordination Meeting in Essen">
-            <p class="home-event-desc">The team gathered at Universität Duisburg-Essen for WP workshops, partner updates, and a tour of the Zollverein World Heritage Site.</p>
-            <a href="pages/events.html#event-essen-2025" class="home-event-readmore">Read more</a>
-          </article>
-
+        <div role="list" aria-label="Upcoming events">
+          <a class="event-row" href="pages/event-workshop-mdst-2026.html" data-location="online" role="listitem">
+            <div class="event-date">28 MAY 2026</div>
+            <div class="event-location">Online</div>
+            <div class="event-title">International Workshop: How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility <span class="badge-upcoming">Upcoming</span></div>
+            <span class="event-arrow-btn" aria-hidden="true">→</span>
+          </a>
         </div>
 
         <div class="home-events-cta">

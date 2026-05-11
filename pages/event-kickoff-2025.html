@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PROMISE Project Kick-off Meeting — PROMISE</title>
+  <link rel="stylesheet" href="../main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/promise_favicon_32x32.png">
+
+  <style>
+    body { display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; }
+
+    /* ---- Static back link ---- */
+    .event-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #70858f;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 28px 0 0;
+      transition: color 0.15s ease;
+    }
+    .event-back:hover { color: #0a5a3e; }
+    .event-back-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* ---- Hero ---- */
+    .event-page-hero {
+      text-align: center;
+      padding: 40px 16px 36px;
+    }
+    .event-page-title {
+      font-size: clamp(22px, 3.8vw, 40px);
+      font-weight: 800;
+      color: #0d2e22;
+      line-height: 1.2;
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+    .event-page-location-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #70858f;
+    }
+
+    /* ---- Info card ---- */
+    .event-info-card {
+      background: #1a4a35;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      margin: 0 0 44px;
+    }
+    .event-info-image {
+      flex: 0 0 60%;
+      background: #f0f5f2;
+      display: flex;
+      align-items: stretch;
+    }
+    .event-info-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .event-info-meta {
+      flex: 1;
+      padding: 36px 36px 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .meta-row {
+      padding: 14px 0;
+      border-bottom: 1px dotted rgba(255,255,255,0.12);
+    }
+    .meta-row:first-child { padding-top: 0; }
+    .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .meta-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 5px;
+    }
+    .meta-value {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    /* ---- Description ---- */
+    .event-description {
+      max-width: 720px;
+      margin: 0 auto 56px;
+      color: #70858f;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .event-description p + p { margin-top: 22px; }
+
+    @media (max-width: 900px) {
+      .event-info-card { flex-direction: column; }
+      .event-info-image { min-height: 240px; flex: none; }
+      .event-info-meta { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ---------------- Header / Nav ---------------- -->
+  <header class="site-header" role="banner">
+    <div class="nav-shell">
+      <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo-wrap">
+          <a href="../index.html" class="logo-box">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          </a>
+        </div>
+        <ul class="nav-links" role="menubar" aria-label="Primary">
+          <li class="dropdown">
+            <a href="#about" role="menuitem" class="dropbtn">About</a>
+            <ul class="dropdown-content" role="menu">
+              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
+              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
+              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
+            </ul>
+          </li>
+          <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
+          <li><a href="news.html" role="menuitem">News</a></li>
+          <li><a href="events.html" role="menuitem">Events</a></li>
+          <li><a href="contact.html" role="menuitem">Contact Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
+          <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+      </nav>
+    </div>
+    <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
+    <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
+      <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="mobile-panel-logo">
+        <a href="../index.html">
+          <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+        </a>
+      </div>
+      <nav class="mobile-panel-nav">
+        <a href="#about" class="mobile-drop">About</a>
+        <div class="mobile-submenu">
+          <a href="about.html">PROMISE Project</a>
+          <a href="consortium.html">Consortium</a>
+          <a href="work-packages.html">How We Work</a>
+        </div>
+        <a href="living-labs.html">Living Labs</a>
+        <a href="news.html">News</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+
+      <a href="events.html" class="event-back">
+        <span class="event-back-icon">←</span>
+        all events
+      </a>
+
+      <section class="event-page-hero">
+        <h1 class="event-page-title">PROMISE Project Kick-off Meeting</h1>
+        <span class="event-page-location-badge">Online</span>
+      </section>
+
+      <div class="event-info-card">
+        <div class="event-info-image">
+          <img src="../assets/Events/kickoff-march-2025.png" alt="PROMISE kick-off meeting">
+        </div>
+        <div class="event-info-meta">
+          <div class="meta-row">
+            <span class="meta-label">Date</span>
+            <span class="meta-value">30 March 2025</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Online</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="event-description">
+        <p>Last March, PROMISE officially kicked off. Researchers, urban planners, and AI specialists from across Europe came together for our launch meeting, sharing one goal: to reduce car dependency in European cities. Working on the 15-minute city concept, the project co-creates solutions with cities, tests them in real-world living labs, and builds tools that help planners make evidence-based decisions about micro-mobility infrastructure. Over three years, PROMISE combines research, technology, and collaboration to tackle one of urban planning's toughest challenges: how do we move people efficiently while keeping our cities livable, sustainable, and inclusive?</p>
+      </section>
+
+    </div>
+  </main>
+
+  <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
+
+  <footer class="promise-footer">
+    <div class="promise-footer-container">
+      <div class="promise-footer-about">
+        <div>
+          <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        </div>
+        <div class="promise-footer-eu">
+          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+        </div>
+      </div>
+      <div class="promise-footer-links">
+        <a>Legal notice</a>
+        <a>Privacy Policy</a>
+        <a>Accessibility</a>
+        <a href="contact.html">Contact</a>
+        <a>Press</a>
+      </div>
+      <div class="promise-footer-social">
+        <span>Find us on</span>
+        <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
+      </div>
+    </div>
+    <div class="promise-footer-copy">&copy; 2025 Promise Project</div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
+    const mobilePanelClose = document.getElementById('mobilePanelClose');
+    function toggleMobileMenu(show) {
+      const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show', isShow);
+      mobilePanelOverlay.classList.toggle('show', isShow);
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', String(isShow));
+      mobilePanel.setAttribute('aria-hidden', String(!isShow));
+      mobilePanelOverlay.setAttribute('aria-hidden', String(!isShow));
+      document.body.style.overflow = isShow ? 'hidden' : '';
+    }
+    if (menuToggle) menuToggle.addEventListener('click', () => toggleMobileMenu());
+    if (mobilePanelClose) mobilePanelClose.addEventListener('click', () => toggleMobileMenu(false));
+    if (mobilePanelOverlay) mobilePanelOverlay.addEventListener('click', () => toggleMobileMenu(false));
+    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const submenu = btn.nextElementSibling;
+        if (submenu && submenu.classList.contains('mobile-submenu')) {
+          btn.classList.toggle('active');
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+        } else { toggleMobileMenu(false); }
+      });
+    });
+    const goToTopBtn = document.getElementById('goToTop');
+    window.addEventListener('scroll', () => {
+      goToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
+    });
+    goToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

@@ -3,16 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>International Workshop: How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility — PROMISE</title>
+  <title>Stakeholder Workshop, Bochum-Ehrenfeld — PROMISE</title>
   <link rel="stylesheet" href="../main.css">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/promise_favicon_32x32.png">
 
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    body { display: flex; flex-direction: column; min-height: 100vh; }
     main { flex: 1; }
 
     /* ---- Static back link ---- */
@@ -44,14 +40,6 @@
     .event-page-hero {
       text-align: center;
       padding: 40px 16px 36px;
-    }
-    .event-page-kicker {
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #0a5a3e;
-      margin: 0 0 12px;
     }
     .event-page-title {
       font-size: clamp(22px, 3.8vw, 40px);
@@ -103,10 +91,7 @@
       border-bottom: 1px dotted rgba(255,255,255,0.12);
     }
     .meta-row:first-child { padding-top: 0; }
-    .meta-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+    .meta-row:last-child { border-bottom: none; padding-bottom: 0; }
     .meta-label {
       display: block;
       font-size: 0.7rem;
@@ -134,141 +119,10 @@
     }
     .event-description p + p { margin-top: 22px; }
 
-    /* ---- Agenda inside dark card ---- */
-    .card-agenda-title {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin: 20px 0 0;
-      padding-top: 18px;
-      border-top: 1px dotted rgba(255,255,255,0.12);
-    }
-    .card-agenda-list { margin-top: 4px; }
-    .card-agenda-item {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px dotted rgba(255,255,255,0.12);
-    }
-    .card-agenda-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .card-agenda-num {
-      flex-shrink: 0;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.4);
-      width: 20px;
-    }
-    .card-agenda-text {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.55;
-    }
-
-    /* Links inside the dark card */
-    .event-info-meta a {
-      color: #fff;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(255,255,255,0.35);
-      transition: text-decoration-color 0.15s ease;
-    }
-    .event-info-meta a:hover {
-      text-decoration-color: rgba(255,255,255,0.9);
-    }
-
-    /* Links in description */
-    .event-description a {
-      color: #0a5a3e;
-      font-weight: 600;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: rgba(10,90,62,0.3);
-      transition: text-decoration-color 0.15s ease;
-    }
-    .event-description a:hover { text-decoration-color: #0a5a3e; }
-
-    /* ---- Floating register button ---- */
-    .btn-register-float {
-      position: fixed;
-      right: 32px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 116px;
-      height: 116px;
-      border-radius: 50%;
-      background: #33AB6D;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      transition: background 0.18s ease, transform 0.18s ease;
-      box-shadow: 0 8px 28px rgba(51,171,109,0.45);
-    }
-    .btn-register-float:hover {
-      background: #2a9159;
-      transform: translateY(-50%) scale(1.07);
-      box-shadow: 0 12px 32px rgba(51,171,109,0.55);
-    }
-    .btn-register-float .reg-text {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-indent: 0.13em; /* compensate trailing letter-spacing */
-      text-transform: uppercase;
-      line-height: 1;
-    }
-    .btn-register-float .reg-arrow {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 1.9rem;
-      font-weight: 400;
-      line-height: 1;
-      margin-top: 4px;
-    }
-
     @media (max-width: 900px) {
       .event-info-card { flex-direction: column; }
-      .event-info-image { min-height: 260px; flex: none; }
+      .event-info-image { min-height: 320px; flex: none; }
       .event-info-meta { padding: 28px 24px; }
-      .btn-register-float {
-        top: auto;
-        bottom: 24px;
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        width: auto;
-        height: auto;
-        border-radius: 50px;
-        padding: 14px 32px;
-        flex-direction: row;
-        gap: 12px;
-        white-space: nowrap;
-      }
-      .btn-register-float:hover {
-        transform: translateX(-50%) scale(1.03);
-      }
-      .btn-register-float .reg-text {
-        font-size: 0.82rem;
-        letter-spacing: 0.13em;
-        text-indent: 0.13em;
-        width: auto;
-      }
-      .btn-register-float .reg-arrow {
-        font-size: 1.2rem;
-        margin-top: 0;
-        width: auto;
-      }
     }
   </style>
 </head>
@@ -303,10 +157,7 @@
         </div>
       </nav>
     </div>
-    <!-- Mobile panel overlay -->
     <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
-
-    <!-- Mobile panel -->
     <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
       <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
         <span aria-hidden="true">&times;</span>
@@ -331,7 +182,6 @@
     </div>
   </header>
 
-  <!-- ---------------- Main content ---------------- -->
   <main>
     <div class="page">
 
@@ -340,60 +190,40 @@
         all events
       </a>
 
-      <!-- Hero -->
       <section class="event-page-hero">
-        <p class="event-page-kicker">International Workshop</p>
-        <h1 class="event-page-title">How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility</h1>
-        <span class="event-page-location-badge">Online</span>
+        <h1 class="event-page-title">Stakeholder Workshop with Users and Affected Groups of Micromobility in the Living Lab of Bochum-Ehrenfeld</h1>
+        <span class="event-page-location-badge">Bochum-Ehrenfeld, Germany</span>
       </section>
 
-      <!-- Info card -->
       <div class="event-info-card">
         <div class="event-info-image">
-          <img src="../assets/Events/workshop-mdst-2026.png" alt="International Workshop flyer — How Digital Decision-Support Tools Can Strengthen Urban Micro-Mobility">
+          <img src="../assets/Events/bochum-workshop-2026.png" alt="Banner for the stakeholder workshop on micromobility in the Bochum-Ehrenfeld living lab">
         </div>
         <div class="event-info-meta">
-          <div class="meta-row" style="padding-top:0">
-            <span class="meta-label">Organised by</span>
-            <span class="meta-value">
-              <a href="sub-sic.html">Sustainability InnoCenter</a> &amp; <a href="sub-AAU.html">Aalborg University</a>
-            </span>
+          <div class="meta-row">
+            <span class="meta-label">Date</span>
+            <span class="meta-value">24 June 2026</span>
           </div>
-
-          <p class="card-agenda-title">Agenda</p>
-          <div class="card-agenda-list">
-            <div class="card-agenda-item">
-              <span class="card-agenda-num">01</span>
-              <span class="card-agenda-text">Welcome and introduction</span>
-            </div>
-            <div class="card-agenda-item">
-              <span class="card-agenda-num">02</span>
-              <span class="card-agenda-text">Initial demo of the <a href="work-packages.html#wp3">Micro-Mobility Decision Support Tool (MDST)</a>, presented by <a href="sub-AAU.html">Aalborg University</a></span>
-            </div>
-            <div class="card-agenda-item">
-              <span class="card-agenda-num">03</span>
-              <span class="card-agenda-text">Discussion sessions: stakeholder feedback on the tool and potential areas for improvement</span>
-            </div>
-            <div class="card-agenda-item">
-              <span class="card-agenda-num">04</span>
-              <span class="card-agenda-text">Breakout rooms by Living Lab city: Brașov, Osmangazi, Rethymno, Bochum, and Cologne</span>
-            </div>
+          <div class="meta-row">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Bochum-Ehrenfeld, Germany</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Format</span>
+            <span class="meta-value">In-person</span>
           </div>
         </div>
       </div>
 
-      <!-- Description -->
       <section class="event-description">
-        <p>This online workshop invites researchers, urban planners, and mobility practitioners to explore how digital decision-support tools can guide smarter micro-mobility planning. Organised by <a href="sub-sic.html">Sustainability InnoCenter</a> and <a href="sub-AAU.html">Aalborg University</a> as part of the PROMISE project, the session presents the <a href="work-packages.html#wp3">Micro-Mobility Decision Support Tool (MDST)</a> under development and its application across PROMISE living lab cities.</p>
+        <p>As part of the Bochum-Ehrenfeld living lab, this in-person stakeholder workshop brought together residents who use micromobility and those affected by it in everyday street life. The session created space for direct dialogue on how shared bikes, e-scooters and similar services shape the neighbourhood, surfacing the needs, concerns and ideas of the people who live alongside these modes of transport every day.</p>
       </section>
 
     </div>
   </main>
 
-  <!-- Go to Top Button -->
   <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
 
-  <!-- ---------------- Footer ---------------- -->
   <footer class="promise-footer">
     <div class="promise-footer-container">
       <div class="promise-footer-about">
@@ -404,7 +234,6 @@
           <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
         </div>
       </div>
-
       <div class="promise-footer-links">
         <a>Legal notice</a>
         <a>Privacy Policy</a>
@@ -412,26 +241,19 @@
         <a href="contact.html">Contact</a>
         <a>Press</a>
       </div>
-
       <div class="promise-footer-social">
         <span>Find us on</span>
         <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
-
-    <div class="promise-footer-copy">
-      &copy; 2025 Promise Project
-    </div>
+    <div class="promise-footer-copy">&copy; 2025 Promise Project</div>
   </footer>
 
-  <!-- ---------------- Scripts ---------------- -->
   <script>
-    // Mobile toggle
     const menuToggle = document.getElementById('menuToggle');
     const mobilePanel = document.getElementById('mobilePanel');
     const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
     const mobilePanelClose = document.getElementById('mobilePanelClose');
-
     function toggleMobileMenu(show) {
       const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
       mobilePanel.classList.toggle('show', isShow);
@@ -444,27 +266,20 @@
     if (menuToggle) menuToggle.addEventListener('click', () => toggleMobileMenu());
     if (mobilePanelClose) mobilePanelClose.addEventListener('click', () => toggleMobileMenu(false));
     if (mobilePanelOverlay) mobilePanelOverlay.addEventListener('click', () => toggleMobileMenu(false));
-
     document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn => {
       btn.addEventListener('click', () => {
         const submenu = btn.nextElementSibling;
         if (submenu && submenu.classList.contains('mobile-submenu')) {
           btn.classList.toggle('active');
           submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
-        } else {
-          toggleMobileMenu(false);
-        }
+        } else { toggleMobileMenu(false); }
       });
     });
-
-    // Go to Top
     const goToTopBtn = document.getElementById('goToTop');
     window.addEventListener('scroll', () => {
       goToTopBtn.classList.toggle('visible', window.pageYOffset > 300);
     });
-    goToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    goToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>

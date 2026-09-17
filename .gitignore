@@ -33,3 +33,12 @@ assets/tmp/
 
 # Local mirror / backup folder
 dut-promise/
+
+# Claude Code session data
+.claude/
+
+# Redesign prototype source (promoted to production 2026-09-17)
+redesign/
+
+# Local scratch archives
+pages.zip

@@ -1,204 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>STADT KOLN – PROMISE</title>
+
+  <title>STADT KOLN — PROMISE</title>
   <link rel="stylesheet" href="../main.css">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/promise_favicon_32x32.png">
-  <style>
-    .partner-section-divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #d0d0d0, transparent);
-      margin: 32px 0;
-    }
-
-    .two-column-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .two-column-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-    }
-
-    .content-section {
-      background: #f8f9fa;
-      padding: 24px;
-      border-radius: 8px;
-    }
-
-    .content-section h2 {
-      margin-top: 0;
-      color: #0a5a3e;
-      font-size: 1.3em;
-      margin-bottom: 16px;
-    }
-
-    .content-section p {
-      margin-bottom: 12px;
-      line-height: 1.6;
-    }
-
-    .content-section ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 12px;
-    }
-
-    .content-section ul li {
-      padding-left: 20px;
-      position: relative;
-      margin-bottom: 8px;
-      line-height: 1.6;
-    }
-
-    .content-section ul li:before {
-      content: "-";
-      position: absolute;
-      left: 0;
-      color: #0a5a3e;
-      font-weight: bold;
-    }
-
-    .personnel-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .personnel-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .personnel-card {
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: box-shadow 0.3s ease;
-    }
-
-    .personnel-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .personnel-card h3 {
-      color: #0a5a3e;
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 1.2em;
-    }
-
-    .personnel-card .specialization {
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 8px;
-      display: block;
-    }
-
-    .personnel-card p {
-      line-height: 1.6;
-      margin-bottom: 12px;
-      color: #555;
-    }
-
-    .personnel-card .orcid-link {
-      display: inline-block;
-      margin-top: 8px;
-      color: #0a5a3e;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .personnel-card .orcid-link:hover {
-      text-decoration: underline;
-    }
-
-    .publications-section {
-      margin-top: 0;
-      background: #f8f9fa;
-      padding: 24px;
-      border-radius: 8px;
-    }
-
-    .publications-section h2 {
-      color: #0a5a3e;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 1.3em;
-    }
-
-    .publications-section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .publications-section ul li {
-      margin-bottom: 16px;
-      padding: 16px;
-      background: #ffffff;
-      border-left: 3px solid #0a5a3e;
-      border-radius: 4px;
-      line-height: 1.6;
-    }
-
-    .publications-section ul li strong {
-      color: #333;
-    }
-
-    .publications-section ul li em {
-      color: #666;
-    }
-
-    .publications-section ul li a {
-      color: #0a5a3e;
-      text-decoration: none;
-      font-weight: 500;
-      margin-left: 8px;
-    }
-
-    .publications-section ul li a:hover {
-      text-decoration: underline;
-    }
-
-    .partner-right h1 {
-      color: #0a5a3e;
-      margin-bottom: 8px;
-    }
-
-    .partner-type {
-      color: #666;
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-  </style>
 </head>
-<body>
-  <header class="site-header" role="banner">
+<body class="partner-page-redesign">
+
+  <!-- ---------------- Header / Nav ----------------
+       Interior page: header initialized with nav-scrolled permanently
+       (solid state) to avoid white-on-white links. -->
+  <header class="site-header nav-scrolled" role="banner">
     <div class="nav-shell">
       <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="logo-wrap">
-          <a href="../index.html" class="logo-box">
-            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          <a href="../index.html" class="logo-box" id="logoPlaceholder">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo" onerror="this.style.display='block'; this.parentElement.textContent='LOGO'">
           </a>
         </div>
+
         <ul class="nav-links" role="menubar" aria-label="Primary">
-          <li class="dropdown">
-            <a href="#about" role="menuitem" class="dropbtn">About</a>
+          <li role="none" class="dropdown">
+            <a role="menuitem" href="#about" class="dropbtn">About</a>
             <ul class="dropdown-content" role="menu">
-              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
-              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
-              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
+              <li><a role="menuitem" href="about.html">PROMISE Project</a></li>
+              <li><a role="menuitem" href="consortium.html">Consortium</a></li>
+              <li><a role="menuitem" href="work-packages.html">How We Work</a></li>
             </ul>
           </li>
           <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
@@ -206,30 +36,29 @@
           <li><a href="events.html" role="menuitem">Events</a></li>
           <li><a href="contact.html" role="menuitem">Contact Us</a></li>
         </ul>
+
         <div class="nav-actions">
           <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
-          <button class="menu-toggle" id="menuToggle">☰</button>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel" aria-label="Open menu">☰</button>
         </div>
       </nav>
     </div>
+
     <!-- Mobile panel overlay -->
     <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
-    
+
     <!-- Mobile panel -->
     <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
-      <!-- Close button -->
       <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
         <span aria-hidden="true">&times;</span>
       </button>
-      
-      <!-- Centered logo -->
+
       <div class="mobile-panel-logo">
         <a href="../index.html">
           <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
         </a>
       </div>
-      
-      <!-- Navigation links -->
+
       <nav class="mobile-panel-nav">
         <a href="#about" class="mobile-drop">About</a>
         <div class="mobile-submenu">
@@ -243,62 +72,76 @@
         <a href="events.html">Events</a>
         <a href="contact.html">Contact Us</a>
       </nav>
+
+      <div class="mobile-bottom-actions" style="display:none;">
+        <button class="btn-cta" id="mobileGetInvolved">Get Involved</button>
+      </div>
     </div>
   </header>
 
   <main>
-    <div class="partner-container">
-      <div class="partner-left">
-        <div class="partner-logo">
-          <img src="../assets/Consortium/koln-logo.png" alt="STADT KOLN logo">
+    <section class="section-flat" aria-labelledby="partnerTitle">
+      <div class="section-inner">
+
+
+        <!-- ---------------- Hero band ---------------- -->
+        <div class="partner-hero">
+          <div class="partner-hero-main">
+            <p class="partner-hero-eyebrow">City Authority, Germany</p>
+            <h1 id="partnerTitle" class="partner-hero-title">STADT KOLN</h1>
+
+            <div class="partner-contact">
+              <p class="partner-contact-label">Contact Person</p>
+              <p class="partner-contact-name">Gregor Waluga</p>
+            </div>
+
+            <a href="https://www.stadt-koeln.de/" class="btn-flat-secondary" target="_blank" rel="noopener">Visit Website</a>
+          </div>
+
+          <div class="partner-hero-logo">
+            <img src="../assets/Consortium/koln-logo.png" alt="STADT KOLN logo">
+          </div>
         </div>
-        <div class="partner-contact">
-          <h3>Gregor Waluga</h3>
-          <h4>Contact Person</h4>
-         <!-- <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e190c1b19110c50091f120b191f3e0d0a1f1a0a5315111b1210501a1b">[email&#160;protected]</a></p> -->
-          <a href="https://www.stadt-koeln.de/" class="partner-cta" target="_blank">Visit Website</a>
-        </div>
-      </div>
-      <div class="partner-right">
-        <h1>STADT KOLN</h1>
-        <p class="partner-type">City Authority | Germany</p>
-        <p class="partner-desc">STADT KOLN (City of Cologne) is a city that has an active approach to their urban development plans and focus, implementing guiding principles for the city’s development that steers “future actions of politics, administration, and urban society”.</p>
-        
-        <div class="partner-section-divider"></div>
-        
-        <div class="two-column-grid">
-          <div class="content-section">
-            <h2>Main Tasks in PROMISE</h2>
-            <ul>
+
+        <!-- ---------------- Section stack ---------------- -->
+        <div class="partner-sections">
+
+          <section class="partner-section">
+            <h2 class="partner-section-title">Main Tasks in PROMISE</h2>
+            <ul class="partner-list">
               <li>Living Lab coordination for Cologne</li>
             </ul>
-          </div>
+          </section>
+
+          <section class="partner-section">
+            <h2 class="partner-section-title">Related Experience</h2>
+            <ul class="partner-refs partner-refs--prose">
+              <li class="partner-ref">Inclusive urban mobility, cargo bike integration, and accessibility solutions for diverse demographic groups</li>
+            </ul>
+          </section>
+
         </div>
 
-        <div class="partner-section-divider"></div>
-
-          <div class="publications-section">
-            <h2>Related Experience</h2>
-            <ul>
-              <li>Inclusive urban mobility, cargo bike integration, and accessibility solutions for diverse demographic groups</li>
-            </ul>
-          </div>
+        <!-- ---------------- Page end CTA ---------------- -->
+        <div class="partner-end">
+          <a href="consortium.html" class="btn-flat-secondary">Our Consortium</a>
         </div>
 
       </div>
-    </div>
+    </section>
   </main>
 
   <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
 
+  <!-- ---------------- Footer ---------------- -->
   <footer class="promise-footer">
     <div class="promise-footer-container">
       <div class="promise-footer-about">
-        <div>
-        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        <div class="promise-footer-eu">
+          <span class="promise-footer-logo-crop promise-footer-logo-crop--eu" role="img" aria-label="Co-funded by the European Union"></span>
         </div>
         <div class="promise-footer-eu">
-          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+          <span class="promise-footer-logo-crop promise-footer-logo-crop--dut" role="img" aria-label="DUT logo"></span>
         </div>
       </div>
 
@@ -312,7 +155,6 @@
 
       <div class="promise-footer-social">
         <span>Find us on</span>
-        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
         <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
@@ -322,41 +164,41 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
+    // ========== Mobile menu toggle ==========
     const menuToggle = document.getElementById('menuToggle');
     const mobilePanel = document.getElementById('mobilePanel');
     const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
     const mobilePanelClose = document.getElementById('mobilePanelClose');
-    
+
     function toggleMobileMenu(show){
-      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
-      mobilePanel.classList.toggle('show',isShow);
-      mobilePanelOverlay.classList.toggle('show',isShow);
-      menuToggle.setAttribute('aria-expanded',String(isShow));
-      mobilePanel.setAttribute('aria-hidden',String(!isShow));
-      mobilePanelOverlay.setAttribute('aria-hidden',String(!isShow));
+      const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show', isShow);
+      mobilePanelOverlay.classList.toggle('show', isShow);
+      menuToggle.setAttribute('aria-expanded', String(isShow));
+      mobilePanel.setAttribute('aria-hidden', String(!isShow));
+      mobilePanelOverlay.setAttribute('aria-hidden', String(!isShow));
       document.body.style.overflow = isShow ? 'hidden' : '';
     }
-    
-    menuToggle.addEventListener('click',()=>toggleMobileMenu());
-    mobilePanelClose.addEventListener('click',()=>toggleMobileMenu(false));
-    mobilePanelOverlay.addEventListener('click',()=>toggleMobileMenu(false));
-    
-    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn=>{
-      btn.addEventListener('click',()=>{
+
+    menuToggle.addEventListener('click', ()=> toggleMobileMenu());
+    mobilePanelClose.addEventListener('click', ()=> toggleMobileMenu(false));
+    mobilePanelOverlay.addEventListener('click', ()=> toggleMobileMenu(false));
+
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn => {
+      btn.addEventListener('click', () => {
         const submenu = btn.nextElementSibling;
         if(submenu && submenu.classList.contains('mobile-submenu')){
           btn.classList.toggle('active');
-          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
         } else {
           toggleMobileMenu(false);
         }
       });
     });
+
     // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
-
-    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
         goToTopBtn.classList.add('visible');
@@ -364,13 +206,9 @@
         goToTopBtn.classList.remove('visible');
       }
     });
-
-    // Smooth scroll to top when clicked
     goToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-     </script>
+  </script>
+</body>
+</html>

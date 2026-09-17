@@ -3,28 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Living Labs — PROMISE</title>
   <link rel="stylesheet" href="../main.css">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/promise_favicon_32x32.png">
 </head>
+<body class="living-labs-page-redesign">
 
-<body>
-  <!-- ---------------- Header / Nav ---------------- -->
-  <header class="site-header" role="banner">
+  <!-- ---------------- Header / Nav ----------------
+       No dark hero on this page, so the header is initialized with
+       nav-scrolled permanently (solid state) to avoid white-on-white links. -->
+  <header class="site-header nav-scrolled" role="banner">
     <div class="nav-shell">
       <nav class="navbar" role="navigation" aria-label="Main Navigation">
         <div class="logo-wrap">
-          <a href="../index.html" class="logo-box">
-            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
+          <a href="../index.html" class="logo-box" id="logoPlaceholder">
+            <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo" onerror="this.style.display='block'; this.parentElement.textContent='LOGO'">
           </a>
         </div>
+
         <ul class="nav-links" role="menubar" aria-label="Primary">
-          <li class="dropdown">
-            <a href="#about" role="menuitem" class="dropbtn">About</a>
+          <li role="none" class="dropdown">
+            <a role="menuitem" href="#about" class="dropbtn">About</a>
             <ul class="dropdown-content" role="menu">
-              <li><a href="about.html" role="menuitem">PROMISE Project</a></li>
-              <li><a href="consortium.html" role="menuitem">Consortium</a></li>
-              <li><a href="work-packages.html" role="menuitem">How We Work</a></li>
+              <li><a role="menuitem" href="about.html">PROMISE Project</a></li>
+              <li><a role="menuitem" href="consortium.html">Consortium</a></li>
+              <li><a role="menuitem" href="work-packages.html">How We Work</a></li>
             </ul>
           </li>
           <li><a href="living-labs.html" role="menuitem">Living Labs</a></li>
@@ -32,30 +36,29 @@
           <li><a href="events.html" role="menuitem">Events</a></li>
           <li><a href="contact.html" role="menuitem">Contact Us</a></li>
         </ul>
+
         <div class="nav-actions">
           <button class="btn-cta" id="getInvolved" style="display:none;">GET INVOLVED</button>
-          <button class="menu-toggle" id="menuToggle">☰</button>
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel" aria-label="Open menu">☰</button>
         </div>
       </nav>
     </div>
+
     <!-- Mobile panel overlay -->
     <div id="mobilePanelOverlay" class="mobile-panel-overlay" aria-hidden="true"></div>
-    
+
     <!-- Mobile panel -->
     <div id="mobilePanel" class="mobile-panel" aria-hidden="true">
-      <!-- Close button -->
       <button class="mobile-panel-close" id="mobilePanelClose" aria-label="Close menu">
         <span aria-hidden="true">&times;</span>
       </button>
-      
-      <!-- Centered logo -->
+
       <div class="mobile-panel-logo">
         <a href="../index.html">
           <img src="../assets/Homepage/Logo_Promise.png" alt="PROMISE logo">
         </a>
       </div>
-      
-      <!-- Navigation links -->
+
       <nav class="mobile-panel-nav">
         <a href="#about" class="mobile-drop">About</a>
         <div class="mobile-submenu">
@@ -69,129 +72,141 @@
         <a href="events.html">Events</a>
         <a href="contact.html">Contact Us</a>
       </nav>
+
+      <div class="mobile-bottom-actions" style="display:none;">
+        <button class="btn-cta" id="mobileGetInvolved">Get Involved</button>
+      </div>
     </div>
   </header>
 
-  <!-- ---------------- Main ---------------- -->
   <main>
-    <div class="page-head" style="padding-top: 2%;">
-      <h1>Living Labs</h1>
-      <p>Five real-world environments where innovative urban mobility solutions are co-created, tested, and scaled.</p>
-    </div>
+    <section class="section-flat labs-detail-flat" aria-labelledby="labsTitle">
+      <div class="section-inner">
+        <div class="labs-detail-head">
+          <h1 id="labsTitle" class="heading-flat">Living Labs</h1>
+          <p class="labs-detail-lead">Five real-world environments where innovative urban mobility solutions are co-created, tested, and scaled.</p>
+        </div>
 
-    <section class="lab-section">
-      <div class="lab-img"><img src="../assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania"></div>
-      <div class="lab-text">
-        <h2>Brașov, Romania</h2>
-        <h4>The Challenge</h4>
-        <p>
-          Brașov’s historic center faces ongoing challenges with traffic congestion, limited parking, and high pollution levels. To address this, local authorities have introduced measures such as a Low Emission and Limited Traffic Zone, peak-hour access restrictions, and resident-priority parking.
-        </p>
-        <h4>Current Initiatives</h4>
-        <p>
-          The city is enhancing public transport, expanding pedestrian zones, and developing cycling infrastructure to encourage sustainable, non-motorized mobility.
-        </p>
-        <h3 style="color:var(--accent)">PROMISE</h3>
-        <p>
-          PROMISE's living lab pilot introduces cargo bikes for last-mile deliveries in Brașov’s historic center, aiming to reduce traffic and pollution while preserving the city’s heritage. Insights from Brașov can guide sustainable mobility solutions in other historic cities.
-        </p>        
-      </div>
-    </section>
+        <article class="lab-detail">
+          <div class="lab-detail-media">
+            <img src="../assets/Homepage/BR-Romania.jpg" alt="Brașov, Romania" loading="lazy" width="4032" height="3024">
+          </div>
+          <div class="lab-detail-text">
+            <h2 class="heading-flat lab-detail-title">Brașov, Romania</h2>
+            <h3 class="lab-detail-sub">The Challenge</h3>
+            <p>
+              Brașov’s historic center faces ongoing challenges with traffic congestion, limited parking, and high pollution levels. To address this, local authorities have introduced measures such as a Low Emission and Limited Traffic Zone, peak-hour access restrictions, and resident-priority parking.
+            </p>
+            <h3 class="lab-detail-sub">Current Initiatives</h3>
+            <p>
+              The city is enhancing public transport, expanding pedestrian zones, and developing cycling infrastructure to encourage sustainable, non-motorized mobility.
+            </p>
+            <h3 class="lab-detail-sub lab-detail-sub--accent">PROMISE</h3>
+            <p>
+              PROMISE's living lab pilot introduces cargo bikes for last-mile deliveries in Brașov’s historic center, aiming to reduce traffic and pollution while preserving the city’s heritage. Insights from Brașov can guide sustainable mobility solutions in other historic cities.
+            </p>
+          </div>
+        </article>
 
-    <section class="lab-section">
-      <div class="lab-img"><img src="../assets/Homepage/OG-Turkey.jpg" alt="Osmangazi, Türkiye"></div>
-      <div class="lab-text">
-        <h2>Osmangazi, Türkiye</h2>
-        <h4>The Challenge</h4>
-        <p>
-          Osmangazi faces mobility challenges between its new city square and the historical area. Plans to restrict vehicle access to the historic zone aim to improve accessibility and reduce congestion.
-        </p>
-        <h4>Current Initiatives</h4>
-        <p>
-          The city participates in urban mobility projects and supportive infrastructure development, with long-term goals including the adoption of micro-mobility solutions.
-        </p>
-        <h3 style="color:var(--accent)">PROMISE</h3>
-        <p>
-          PROMISE's pilot enhances micro-mobility connections between new urban developments and historical areas, integrating different transportation modes while preserving heritage value. Strategies developed in Osmangazi can guide other municipalities in planning effective transit systems.
-        </p>
-      </div>
-    </section>
+        <article class="lab-detail">
+          <div class="lab-detail-media">
+            <img src="../assets/Homepage/OG-Turkey.jpg" alt="Osmangazi, Türkiye" loading="lazy" width="5472" height="3648">
+          </div>
+          <div class="lab-detail-text">
+            <h2 class="heading-flat lab-detail-title">Osmangazi, Türkiye</h2>
+            <h3 class="lab-detail-sub">The Challenge</h3>
+            <p>
+              Osmangazi faces mobility challenges between its new city square and the historical area. Plans to restrict vehicle access to the historic zone aim to improve accessibility and reduce congestion.
+            </p>
+            <h3 class="lab-detail-sub">Current Initiatives</h3>
+            <p>
+              The city participates in urban mobility projects and supportive infrastructure development, with long-term goals including the adoption of micro-mobility solutions.
+            </p>
+            <h3 class="lab-detail-sub lab-detail-sub--accent">PROMISE</h3>
+            <p>
+              PROMISE's pilot enhances micro-mobility connections between new urban developments and historical areas, integrating different transportation modes while preserving heritage value. Strategies developed in Osmangazi can guide other municipalities in planning effective transit systems.
+            </p>
+          </div>
+        </article>
 
-    <section class="lab-section">
-      <div class="lab-img"><img src="../assets/Homepage/RN-Greece.jpg" alt="Rethymno, Greece"></div>
-      <div class="lab-text">
-        <h2>Rethymno, Greece</h2>
-        <h4>The Challenge</h4>
-        <p>
-          Rethymno aims to expand micro-mobility options, especially for tourists, while addressing concerns from local communities regarding safety and the use of public spaces.
-        </p>
-        <h4>Current Initiatives</h4>
-        <p>
-          The city engages stakeholders, runs educational campaigns, and organizes trial programs and community events to foster acceptance and integration of micro-mobility solutions.
-        </p>
-        <h3 style="color:var(--accent)">PROMISE</h3>
-        <p>
-          PROMISE's pilot develops micro-mobility options for both tourists and residents, balancing local culture with innovative transport solutions. Lessons from Rethymno can guide other tourist-heavy cities in reducing traffic while enhancing tourist experiences.
-        </p>
-      </div>
-    </section>
+        <article class="lab-detail">
+          <div class="lab-detail-media">
+            <img src="../assets/Homepage/RN-Greece.jpg" alt="Rethymno, Greece" loading="lazy" width="5464" height="3640">
+          </div>
+          <div class="lab-detail-text">
+            <h2 class="heading-flat lab-detail-title">Rethymno, Greece</h2>
+            <h3 class="lab-detail-sub">The Challenge</h3>
+            <p>
+              Rethymno aims to expand micro-mobility options, especially for tourists, while addressing concerns from local communities regarding safety and the use of public spaces.
+            </p>
+            <h3 class="lab-detail-sub">Current Initiatives</h3>
+            <p>
+              The city engages stakeholders, runs educational campaigns, and organizes trial programs and community events to foster acceptance and integration of micro-mobility solutions.
+            </p>
+            <h3 class="lab-detail-sub lab-detail-sub--accent">PROMISE</h3>
+            <p>
+              PROMISE's pilot develops micro-mobility options for both tourists and residents, balancing local culture with innovative transport solutions. Lessons from Rethymno can guide other tourist-heavy cities in reducing traffic while enhancing tourist experiences.
+            </p>
+          </div>
+        </article>
 
-    <section class="lab-section">
-      <div class="lab-img"><img src="../assets/Homepage/BM-Germany.jpg" alt="Bochum, Germany"></div>
-      <div class="lab-text">
-        <h2>Bochum, Germany</h2>
-        <h4>The Challenge</h4>
-        <p>
-          Bochum is re-evaluating and optimizing its logistics models to reduce car dependency and improve urban mobility.
-        </p>
-        <h4>Current Initiatives</h4>
-        <p>
-          The city has a strong framework of traffic management and environmental policies, providing a solid foundation for promoting sustainable mobility and logistics solutions.
-        </p>
-        <h3 style="color:var(--accent)">PROMISE</h3>
-        <p>
-          PROMISE's pilot focuses on enhancing urban delivery and logistics through a cargo bike fleet, tackling congestion and pollution from delivery traffic. This approach can be adapted to other cities facing similar challenges. Partnerships between the city, local businesses, and logistics providers create a replicable framework, enabling more efficient, low-carbon urban deliveries tailored to each city’s layout and economic context.
-        </p>
-      </div>
-    </section>
+        <article class="lab-detail">
+          <div class="lab-detail-media">
+            <img src="../assets/Homepage/BM-Germany.jpg" alt="Bochum, Germany" loading="lazy" width="1280" height="853">
+          </div>
+          <div class="lab-detail-text">
+            <h2 class="heading-flat lab-detail-title">Bochum, Germany</h2>
+            <h3 class="lab-detail-sub">The Challenge</h3>
+            <p>
+              Bochum is re-evaluating and optimizing its logistics models to reduce car dependency and improve urban mobility.
+            </p>
+            <h3 class="lab-detail-sub">Current Initiatives</h3>
+            <p>
+              The city has a strong framework of traffic management and environmental policies, providing a solid foundation for promoting sustainable mobility and logistics solutions.
+            </p>
+            <h3 class="lab-detail-sub lab-detail-sub--accent">PROMISE</h3>
+            <p>
+              PROMISE's pilot focuses on enhancing urban delivery and logistics through a cargo bike fleet, tackling congestion and pollution from delivery traffic. This approach can be adapted to other cities facing similar challenges. Partnerships between the city, local businesses, and logistics providers create a replicable framework, enabling more efficient, low-carbon urban deliveries tailored to each city’s layout and economic context.
+            </p>
+          </div>
+        </article>
 
-    <section class="lab-section">
-      <div class="lab-img"><img src="../assets/Homepage/CN-Germany.jpg" alt="Cologne, Germany"></div>
-      <div class="lab-text">
-        <h2>Cologne, Germany</h2>
-        <h4>The Challenge</h4>
-        <p>
-          The City of Cologne intends to improve its urban accessibility and mobility, combined with supportive regulations and infrastructure.
-        </p>
-        <h4>Current Initiatives</h4>
-        <p>
-          The city promotes inclusive and sustainable transport solutions and already maintains a network of cargo bike services, supported by large companies such as 
-          <a href="sub-UPS.html" 
-            style="color: #0a5a3e; text-decoration: none; font-weight: 500;"
-            onmouseover="this.style.textDecoration='underline';" 
-            onmouseout="this.style.textDecoration='none';">
-            UPS</a>.
-        </p>
-        <h3 style="color:var(--accent)">PROMISE</h3>
-        <p>
-          PROMISE's pilot focuses on adapting cargo bikes for diverse user groups, including elderly and handicapped individuals, providing a model for inclusive urban mobility. Insights can guide other cities in creating user-centered, accessible transport systems.
-        </p>
+        <article class="lab-detail">
+          <div class="lab-detail-media">
+            <img src="../assets/Homepage/CN-Germany.jpg" alt="Cologne, Germany" loading="lazy" width="1280" height="992">
+          </div>
+          <div class="lab-detail-text">
+            <h2 class="heading-flat lab-detail-title">Cologne, Germany</h2>
+            <h3 class="lab-detail-sub">The Challenge</h3>
+            <p>
+              The City of Cologne intends to improve its urban accessibility and mobility, combined with supportive regulations and infrastructure.
+            </p>
+            <h3 class="lab-detail-sub">Current Initiatives</h3>
+            <p>
+              The city promotes inclusive and sustainable transport solutions and already maintains a network of cargo bike services, supported by large companies such as
+              <a class="lab-detail-inline-link" href="sub-UPS.html">UPS</a>.
+            </p>
+            <h3 class="lab-detail-sub lab-detail-sub--accent">PROMISE</h3>
+            <p>
+              PROMISE's pilot focuses on adapting cargo bikes for diverse user groups, including elderly and handicapped individuals, providing a model for inclusive urban mobility. Insights can guide other cities in creating user-centered, accessible transport systems.
+            </p>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
-  <!-- Go to Top Button -->
   <button class="go-to-top" id="goToTop" aria-label="Go to top"></button>
 
   <!-- ---------------- Footer ---------------- -->
   <footer class="promise-footer">
     <div class="promise-footer-container">
       <div class="promise-footer-about">
-        <div>
-        <img src="../assets/Homepage/EU_logo.png" alt="Promise Logo" class="promise-footer-logo">
+        <div class="promise-footer-eu">
+          <span class="promise-footer-logo-crop promise-footer-logo-crop--eu" role="img" aria-label="Co-funded by the European Union"></span>
         </div>
         <div class="promise-footer-eu">
-          <img src="../assets/Homepage/DUT_Logo.png" alt="DUT logo" class="promise-footer-logo">
+          <span class="promise-footer-logo-crop promise-footer-logo-crop--dut" role="img" aria-label="DUT logo"></span>
         </div>
       </div>
 
@@ -205,7 +220,6 @@
 
       <div class="promise-footer-social">
         <span>Find us on</span>
-        <!-- <a href="https://youtube.com" target="_blank" aria-label="YouTube"><img src="../assets/Homepage/youtube_icon.png" alt="YouTube"></a> -->
         <a href="https://www.linkedin.com/company/dut-promise/" target="_blank" aria-label="LinkedIn"><img src="../assets/Homepage/Linkedin_logo.png" alt="LinkedIn"></a>
       </div>
     </div>
@@ -215,32 +229,33 @@
     </div>
   </footer>
 
-  <!-- ---------------- Scripts ---------------- -->
   <script>
+    // ========== Mobile menu toggle ==========
     const menuToggle = document.getElementById('menuToggle');
     const mobilePanel = document.getElementById('mobilePanel');
     const mobilePanelOverlay = document.getElementById('mobilePanelOverlay');
     const mobilePanelClose = document.getElementById('mobilePanelClose');
-    
+
     function toggleMobileMenu(show){
-      const isShow = typeof show==='boolean'?show:!mobilePanel.classList.contains('show');
-      mobilePanel.classList.toggle('show',isShow);
-      mobilePanelOverlay.classList.toggle('show',isShow);
-      if (menuToggle) menuToggle.setAttribute('aria-expanded',String(isShow));
-      mobilePanel.setAttribute('aria-hidden',String(!isShow));
-      mobilePanelOverlay.setAttribute('aria-hidden',String(!isShow));
+      const isShow = typeof show === 'boolean' ? show : !mobilePanel.classList.contains('show');
+      mobilePanel.classList.toggle('show', isShow);
+      mobilePanelOverlay.classList.toggle('show', isShow);
+      menuToggle.setAttribute('aria-expanded', String(isShow));
+      mobilePanel.setAttribute('aria-hidden', String(!isShow));
+      mobilePanelOverlay.setAttribute('aria-hidden', String(!isShow));
       document.body.style.overflow = isShow ? 'hidden' : '';
     }
-    if (menuToggle) menuToggle.addEventListener('click',()=>toggleMobileMenu());
-    if (mobilePanelClose) mobilePanelClose.addEventListener('click',()=>toggleMobileMenu(false));
-    if (mobilePanelOverlay) mobilePanelOverlay.addEventListener('click',()=>toggleMobileMenu(false));
 
-    document.querySelectorAll('#mobilePanel a, #mobilePanel .mobile-drop').forEach(btn=>{
-      btn.addEventListener('click',()=>{
+    menuToggle.addEventListener('click', ()=> toggleMobileMenu());
+    mobilePanelClose.addEventListener('click', ()=> toggleMobileMenu(false));
+    mobilePanelOverlay.addEventListener('click', ()=> toggleMobileMenu(false));
+
+    mobilePanel.querySelectorAll('a, .mobile-drop').forEach(btn => {
+      btn.addEventListener('click', () => {
         const submenu = btn.nextElementSibling;
         if(submenu && submenu.classList.contains('mobile-submenu')){
           btn.classList.toggle('active');
-          submenu.style.display = submenu.style.display==='flex'?'none':'flex';
+          submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
         } else {
           toggleMobileMenu(false);
         }
@@ -249,8 +264,6 @@
 
     // ========== Go to Top Button ==========
     const goToTopBtn = document.getElementById('goToTop');
-
-    // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
         goToTopBtn.classList.add('visible');
@@ -258,13 +271,8 @@
         goToTopBtn.classList.remove('visible');
       }
     });
-
-    // Smooth scroll to top when clicked
     goToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

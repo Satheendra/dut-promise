@@ -5824,3 +5824,269 @@ body.work-packages-redesign main > section.wp-flat-hero:first-child {
   min-height: 44vh;
   padding: clamp(110px, 12vw, 150px) var(--space-gutter) clamp(48px, 6vw, 72px);
 }
+
+/* =====================================================================
+   REDESIGN POSTER INFOGRAPHIC (news detail pages)
+   A conference poster rebuilt as page content on a tinted band: centered
+   head, then flat white panels (1px hairline, 4px radius, no shadow), each
+   led by a green number disc. Text inside panels is left-aligned so lists
+   and steps scan cleanly. The poster's own diagram sits inside panel 3;
+   it and the full poster open in the lightbox (.eventpg-figure).
+   ===================================================================== */
+.infog {
+  background: var(--alt-bg);
+}
+.infog-inner {
+  max-width: 1000px;
+}
+
+.infog-head {
+  text-align: center;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.infog-title {
+  margin: 0 auto 12px;
+  max-width: 760px;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--letter-heading);
+  color: var(--accent);
+}
+.infog-sub {
+  margin: 0 auto 10px;
+  max-width: 72ch;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--dark-text);
+}
+.infog-authors {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.infog-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 24px);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+
+.infog-block {
+  background: #fff;
+  border: 1px solid rgba(6, 48, 71, 0.09);
+  border-radius: var(--radius-flat);
+  padding: clamp(22px, 3vw, 32px);
+  color: var(--muted);
+  line-height: 1.65;
+}
+.infog-block--wide {
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+.infog-block p {
+  margin: 0 0 14px;
+}
+.infog-block strong {
+  color: var(--dark-text);
+}
+
+.infog-block-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-heading);
+  color: var(--dark-text);
+}
+.infog-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%; /* shadowless circle, exempt from radius cap */
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.infog-list,
+.infog-future {
+  margin: 0;
+  padding-left: 20px;
+}
+.infog-list li,
+.infog-future li {
+  margin-bottom: 10px;
+}
+.infog-list li:last-child {
+  margin-bottom: 0;
+}
+.infog-list li::marker,
+.infog-future li::marker {
+  color: var(--accent);
+}
+
+/* Research questions as Q1-Q3 rows. */
+.infog-questions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: infogq;
+}
+.infog-questions li {
+  counter-increment: infogq;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 4px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(6, 48, 71, 0.09);
+}
+.infog-questions li::before {
+  content: "Q" counter(infogq);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.infog-lead {
+  color: var(--dark-text);
+}
+
+/* The five living-lab steps as a numbered row, each capped by an accent
+   rule so the sequence reads left to right. */
+.infog-steps {
+  list-style: none;
+  margin: 8px 0 28px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  counter-reset: infogs;
+}
+.infog-steps li {
+  counter-increment: infogs;
+  border-top: 2px solid var(--accent);
+  padding-top: 12px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.infog-steps li::before {
+  content: counter(infogs, decimal-leading-zero);
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-nav);
+  color: var(--accent);
+}
+.infog-steps strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.infog-diagram {
+  margin: 8px 0 0;
+}
+
+.infog-future {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 40px;
+}
+
+.infog-poster {
+  max-width: 420px;
+  margin: clamp(28px, 4vw, 44px) auto 0;
+}
+
+@media (max-width: 900px) {
+  .infog-pair {
+    grid-template-columns: 1fr;
+  }
+  .infog-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .infog-steps,
+  .infog-future {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================ END REDESIGN POSTER INFOGRAPHIC ==================== */
+
+/* =====================================================================
+   REDESIGN TOOL EMBED (Mobilitix news page)
+   Full container width click-to-load embed. The screenshot fills the
+   frame as a placeholder with the Try it button centered over a light
+   solid scrim (no blur). On click at >=900px the live tool iframe is laid
+   over it and the placeholder is hidden; below 900px the button is just a
+   link out. Flat: 1px hairline, 4px radius, no shadow.
+   ===================================================================== */
+.tool-embed {
+  position: relative;
+  /* Matches the placeholder screenshot so nothing is cropped. */
+  aspect-ratio: 800 / 457;
+  margin: 0 0 var(--space-section-sm);
+  border: 1px solid rgba(6, 48, 71, 0.09);
+  border-radius: var(--radius-flat);
+  overflow: hidden;
+  background: #1b1d1f;
+  cursor: pointer;
+}
+.tool-embed::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 46, 34, 0.28);
+  transition: background 0.2s ease;
+  pointer-events: none;
+}
+.tool-embed:hover::after {
+  background: rgba(13, 46, 34, 0.18);
+}
+.tool-embed-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.tool-embed-btn {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tool-embed-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.tool-embed.is-live {
+  cursor: auto;
+}
+.tool-embed.is-live::after,
+.tool-embed.is-live .tool-embed-btn,
+.tool-embed.is-live .tool-embed-poster {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .tool-embed {
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ==================== END REDESIGN TOOL EMBED ======================== */

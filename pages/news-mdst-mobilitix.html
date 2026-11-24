@@ -84,20 +84,20 @@
           <h1 id="newsTitle" class="heading-flat">Mobilitix: the PROMISE Micro-mobility Decision Support Tool demo is online</h1>
         </header>
 
-        <div class="eventpg-body">
+        <!-- Click-to-load embed of the live tool. The screenshot is the
+             placeholder; the tool only loads on click, so the page stays
+             light. Below 900px the tool's narrow layout is too cramped to use
+             inside a page, so the button stays a plain link to the site. -->
+        <div class="tool-embed" id="mobilitixEmbed" data-src="https://www.mobilitix.xyz/">
+          <img class="tool-embed-poster" src="../assets/News/mdst-mobilitix-v2.jpg" alt="Screenshot of Mobilitix for Brașov showing the composite index with cargo-bike traffic and cargo-bike stops" width="1864" height="1065">
+          <a class="btn-flat-primary tool-embed-btn" href="https://www.mobilitix.xyz/" target="_blank" rel="noopener">Try it</a>
+        </div>
 
-          <section class="eventpg-section">
-            <figure class="eventpg-figure">
-              <img src="../assets/News/mdst-mobilitix.jpg" alt="Screenshot of the Mobilitix demo showing reachability isochrones on a city map" loading="lazy" width="1400" height="730">
-            </figure>
-          </section>
+        <div class="eventpg-body">
 
           <section class="eventpg-section">
             <p>The Micro-mobility Decision Support Tool (MDST), developed in Work Package 3 under the lead of Aalborg University, is now available to explore online as Mobilitix.</p>
             <p>The interactive GIS demo lets users switch between cities, plot the shortest cycling route from any point on the map, and explore bikeability, walkability, and composite indexes alongside land use layers and reachability isochrones for 5, 10, and 15 minute travel times.</p>
-            <div class="newspg-cta">
-              <a href="https://www.mobilitix.xyz/" class="btn-flat-primary" target="_blank" rel="noopener">Try it</a>
-            </div>
           </section>
 
         </div>
@@ -187,5 +187,24 @@
     });
   </script>
   <script src="../lightbox.js"></script>
+  <script>
+    (function () {
+      var box = document.getElementById('mobilitixEmbed');
+      if (!box) return;
+      var wide = window.matchMedia('(min-width: 900px)');
+      box.addEventListener('click', function (e) {
+        if (!wide.matches || box.classList.contains('is-live')) return;
+        e.preventDefault();
+        var frame = document.createElement('iframe');
+        frame.className = 'tool-embed-frame';
+        frame.src = box.getAttribute('data-src');
+        frame.title = 'Mobilitix';
+        frame.setAttribute('allow', 'fullscreen');
+        box.appendChild(frame);
+        box.classList.add('is-live');
+        frame.focus();
+      });
+    })();
+  </script>
 </body>
 </html>

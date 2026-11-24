@@ -6092,3 +6092,196 @@ body.work-packages-redesign main > section.wp-flat-hero:first-child {
 }
 
 /* ==================== END REDESIGN TOOL EMBED ======================== */
+
+/* =====================================================================
+   REDESIGN HERO TOOL CARD (homepage Mobilitix)
+   DUT Partnership homepage format: a large solid panel floating over the
+   hero's bottom-left corner, with a circle overlapping its top-right edge
+   (DUT's yellow counter; here the Mobilitix screenshot). Site language
+   kept: deep green, 4px radius, no shadow. The hero headline and slogan
+   move to the right half, left-aligned, to make room.
+   .hero-tool-anchor is a zero-height block right after the hero; the panel
+   is pinned to its bottom edge, so it floats up over the hero whatever its
+   height. Below 1100px the side-by-side layout does not fit: the anchor
+   opens, the panel sits under the hero and the hero text recentres.
+   ===================================================================== */
+.hero-tool-anchor {
+  position: relative;
+  z-index: 3;
+  height: 0;
+}
+.hero-tool {
+  position: absolute;
+  left: clamp(24px, 3vw, 48px);
+  bottom: clamp(24px, 4vh, 48px);
+  width: 480px;
+  padding: 40px 40px 36px;
+  background: #0d2e22;
+  color: #fff;
+  /* Deliberate exception to the 4px radius cap: this panel follows the DUT
+     homepage panel's rounded format (user request). */
+  border-radius: 28px;
+}
+.hero-tool-media {
+  position: absolute;
+  /* How far the circle rises above the panel; also feeds the position of
+     the hero text stacked above it (.hero-content, wide screens). */
+  top: calc(-1 * var(--hero-tool-overhang, 88px));
+  right: -24px;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%; /* shadowless circle, exempt from radius cap */
+  border: 4px solid #0d2e22;
+  display: block;
+  overflow: hidden;
+  background: #e9ece8;
+}
+/* The Mobilitix recording, zoomed 1.7x around the map (origin 70% 58%,
+   biased to the map's bottom-right) so the tool's menus and legends fall
+   outside the circle and only the moving map shows. */
+.hero-tool-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.7);
+  transform-origin: 70% 58%;
+}
+.hero-tool-eyebrow {
+  margin: 0 96px 10px 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: var(--letter-nav);
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+.hero-tool-title {
+  margin: 0 0 16px;
+  font-size: clamp(34px, 3.2vw, 46px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: var(--letter-heading);
+  color: #fff;
+}
+.hero-tool-text {
+  margin: 0 0 24px;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero-tool .hero-tool-btn {
+  background: #fff;
+  color: var(--accent);
+}
+.hero-tool .hero-tool-btn:hover,
+.hero-tool .hero-tool-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--accent-hover);
+}
+
+/* Hero headline and slogan sit just right of the panel, left-aligned, their
+   bottom on the same line as the panel's bottom. The left offset is the
+   panel's own inset + width + one standard gap. */
+@media (min-width: 1100px) {
+  .hero {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .hero-content {
+    /* min-content = the one-line (nowrap) headline's width, so the slogan
+       below wraps to the same measure as the headline. */
+    width: min-content;
+    max-width: none;
+    /* Stacked above the panel, sharing its left edge. Bottom = panel bottom
+       inset + panel height (measured into --hero-tool-h by a script in
+       index.html) + how far the circle rises above the panel + the gap. */
+    position: absolute;
+    left: clamp(24px, 3vw, 48px);
+    bottom: calc(clamp(24px, 4vh, 48px) + var(--hero-tool-h, 337px) + var(--hero-tool-overhang, 88px) + var(--hero-tool-gap, 32px));
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+  /* Headline on exactly two lines (a <br> in the markup; nowrap stops any
+     other wrapping). Sized from the screen height, so the whole stack above
+     the panel still clears the nav on short (720px-high) laptop screens. */
+  .hero-title {
+    white-space: nowrap;
+    font-size: clamp(36px, 6.2vh, 56px);
+  }
+  .hero-content::before {
+    inset: -20% -12%;
+  }
+  /* Slide dots: the bottom edge is now taken by the panel and the slogan, so
+     they stand vertically at mid-height on the right edge. Two classes to
+     beat the page's inline style. */
+  .hero .hero-indicators {
+    left: auto;
+    right: clamp(8px, 1.5vw, 24px);
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+  }
+  .hero-slogan {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+/* Short wide screens (e.g. 1280x720 laptops): the stacked headline, slogan
+   and panel need ~100px more height than these screens have, so tighten
+   the circle, gap, panel padding and slogan size. */
+@media (min-width: 1100px) and (max-height: 800px) {
+  :root {
+    --hero-tool-overhang: 56px;
+    --hero-tool-gap: 24px;
+  }
+  .hero-tool {
+    padding: 28px 32px 24px;
+  }
+  .hero-tool-media {
+    width: 136px;
+    height: 136px;
+  }
+  .hero-tool-title {
+    margin-bottom: 12px;
+  }
+  .hero-tool-text {
+    margin-bottom: 16px;
+  }
+  .hero-slogan {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1099px) {
+  .hero-tool-anchor {
+    height: auto;
+  }
+  .hero-tool {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    padding: 32px var(--space-gutter) 32px;
+    border-radius: 0;
+  }
+  .hero-tool-media {
+    top: 24px;
+    right: var(--space-gutter);
+    width: 96px;
+    height: 96px;
+    border: 0;
+  }
+  .hero-tool-eyebrow {
+    margin-right: 112px;
+  }
+  .hero-tool-title {
+    margin-right: 112px;
+  }
+}
+
+/* ================ END REDESIGN HERO TOOL CARD ======================== */

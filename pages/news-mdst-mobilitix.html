@@ -89,7 +89,7 @@
              light. Below 900px the tool's narrow layout is too cramped to use
              inside a page, so the button stays a plain link to the site. -->
         <div class="tool-embed" id="mobilitixEmbed" data-src="https://www.mobilitix.xyz/">
-          <img class="tool-embed-poster" src="../assets/News/mdst-mobilitix-v2.jpg" alt="Screenshot of Mobilitix for Brașov showing the composite index with cargo-bike traffic and cargo-bike stops" width="1864" height="1065">
+          <video class="tool-embed-poster" src="../assets/News/mobilitix-demo.mp4" poster="../assets/News/mdst-mobilitix-v2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of Mobilitix: choosing Brașov, layering the bikeability index, cargo-bike traffic and stops, and plotting a cycling route" width="1600" height="900"></video>
           <a class="btn-flat-primary tool-embed-btn" href="https://www.mobilitix.xyz/" target="_blank" rel="noopener">Try it</a>
         </div>
 
@@ -191,6 +191,7 @@
     (function () {
       var box = document.getElementById('mobilitixEmbed');
       if (!box) return;
+      var demo = box.querySelector('video');
       var wide = window.matchMedia('(min-width: 900px)');
       box.addEventListener('click', function (e) {
         if (!wide.matches || box.classList.contains('is-live')) return;
@@ -202,6 +203,7 @@
         frame.setAttribute('allow', 'fullscreen');
         box.appendChild(frame);
         box.classList.add('is-live');
+        if (demo) demo.pause();
         frame.focus();
       });
     })();

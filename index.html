@@ -235,13 +235,30 @@
 
       <div class="hero-content">
         <h1 id="heroTitle" class="hero-title">
-          Shaping the Future of Urban Mobility
+          Shaping the Future<br>of Urban Mobility
         </h1>
         <div class="hero-slogan" id="heroSlogan">
           PROMISE is reshaping the way we move through cities by shifting urban mobility away from car dependency and towards smarter, greener, and more connected solutions.
         </div>
       </div>
     </section>
+
+    <!-- Mobilitix panel, after the DUT Partnership homepage's floating info
+         panel. A zero-height anchor after the hero lets the panel float over
+         the hero's bottom-left corner on wide screens (the hero clips
+         overflow, so the panel cannot live inside it); on narrower screens
+         the anchor opens up and the panel sits below the hero. -->
+    <div class="hero-tool-anchor">
+      <aside class="hero-tool" aria-labelledby="heroToolTitle">
+        <span class="hero-tool-media" aria-hidden="true">
+          <video class="hero-tool-video" src="assets/News/mobilitix-demo.mp4" poster="assets/News/mdst-mobilitix-v2.jpg" autoplay muted playsinline></video>
+        </span>
+        <p class="hero-tool-eyebrow">Micro-mobility Decision Support Tool (MDST)</p>
+        <h2 id="heroToolTitle" class="hero-tool-title">Mobilitix</h2>
+        <p class="hero-tool-text">An interactive web-based platform for exploring, analysing and comparing micro-mobility options to support more sustainable urban planning.</p>
+        <a class="btn-flat-primary hero-tool-btn" href="https://www.mobilitix.xyz/" target="_blank" rel="noopener">Try it</a>
+      </aside>
+    </div>
 
     <!-- ====== Homepage: Latest News (SAT-53) ======
          Replaces the hidden legacy home news slider (placeholder cards that
@@ -538,6 +555,39 @@
     }
     updateNavScrolled();
     window.addEventListener('scroll', updateNavScrolled, { passive: true });
+
+    // ========== Hero: Mobilitix video in the panel's circle ==========
+    // Loops the map part of the recording at 3x speed, skipping its opening
+    // globe/city picker (first ~10s). No `loop` attribute: restarting on
+    // `ended` avoids flashing the opening frame on every wrap.
+    (function () {
+      const video = document.querySelector('.hero-tool-video');
+      if (!video) return;
+      const FROM = 10;
+      const SPEED = 3;
+      video.defaultPlaybackRate = SPEED;
+      video.playbackRate = SPEED;
+      video.addEventListener('loadedmetadata', () => {
+        video.currentTime = FROM;
+        video.playbackRate = SPEED;
+      });
+      video.addEventListener('ended', () => {
+        video.currentTime = FROM;
+        video.playbackRate = SPEED;
+        video.play().catch(() => {});
+      });
+    })();
+
+    // ========== Hero: keep the headline centred on the Mobilitix panel ==========
+    // Publishes the panel's rendered height as --hero-tool-h for the CSS that
+    // centres .hero-content on the panel; re-measures on any resize.
+    (function () {
+      const panel = document.querySelector('.hero-tool');
+      if (!panel || !window.ResizeObserver) return;
+      const publish = () => document.documentElement.style.setProperty('--hero-tool-h', panel.offsetHeight + 'px');
+      new ResizeObserver(publish).observe(panel);
+      publish();
+    })();
 
     // ========== Events teaser (SAT-9) ==========
     // Data sourced verbatim from the individual event pages / pages/events.html.

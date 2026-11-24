@@ -2386,19 +2386,21 @@ header.site-header:not(.nav-scrolled) .menu-toggle {
 
 /* ---- Contact Us: quiet secondary emphasis (flat outline, not a pill) ----
    Uses the flat radius and a 1px border. Colour still follows top/scrolled. */
-.nav-links li:last-child a {
+/* Child combinators keep the Contact Us button styles off the last item of
+   the About dropdown (How We Work), which is also an li:last-child. */
+.nav-links > li:last-child > a {
   border: 1px solid currentColor;
   border-radius: var(--radius-flat);
   padding: 0 16px;
 }
-.nav-links li:last-child a:hover,
-.nav-links li:last-child a:focus-visible {
+.nav-links > li:last-child > a:hover,
+.nav-links > li:last-child > a:focus-visible {
   background: var(--accent);
   border-color: var(--accent);
   color: #ffffff;
 }
-header.site-header:not(.nav-scrolled) .nav-links li:last-child a:hover,
-header.site-header:not(.nav-scrolled) .nav-links li:last-child a:focus-visible {
+header.site-header:not(.nav-scrolled) .nav-links > li:last-child > a:hover,
+header.site-header:not(.nav-scrolled) .nav-links > li:last-child > a:focus-visible {
   background: rgba(255, 255, 255, 0.16);
   border-color: #ffffff;
   color: #ffffff;
